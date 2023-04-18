@@ -28,8 +28,8 @@ export default defineStore('userStore', {
             if (user) this.user = user;
         },
         async signUp(email, password) {
-            const { user, error } = await supabase.AuthApiError.signUp() {
-                if (error) {throw error;
+            const { user, error } = await supabase.AuthApiError.signUp(), {
+                if (error) { throw error;
             this.user = null;
         },
     },
@@ -43,4 +43,6 @@ export default defineStore('userStore', {
             }
         ]
     }
-})
+
+}},
+});
