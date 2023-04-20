@@ -1,16 +1,29 @@
+<!-- Feature: Log in to the app
+  Background: As a user, I want to log in to the to-do app
+    Given I already have an account
+
+Scenario: As a user, I want to log in to the app
+  When I visit the login page
+  And I enter my email as "test@example.co.uk"
+  And I enter my password as "****"
+  And I click the Log In button
+  Then I expect to be logged in to the app 
+  And I expect to see the home screen -->
+
 <template>
 <div class="login">
     <h1>LOGIN</h1>
     <input type="handleSignIn">
-    <button type="success" :icon='check' circle @click="handleSignIn">SignIn</button>
-    <router-link to="/auth/sign-up">SignUp</router-link>
+    <button type="success" @click="handleSignIn">SignIn</button>
+    <RouterLink to="/auth/sign-up">SignUp</RouterLink>
 </div>
 </template>
 
 <script>
+import { RouterLink } from 'vue-router'
 import { mapState, mapActions } from 'pinia';
-import userStore from '@/store/user';
-import { Check, Delete, Edit, Message, Search, Star } from '@element-plus/icons-vue';
+import userStore from '@/stores/user';
+// import { Check, Delete, Edit, Message, Search, Star } from '@element-plus/icons-vue';
 
 export default {
     name: 'SignIn',
@@ -40,7 +53,7 @@ input{
 }
 
 button {
-    
+    background-color: aquamarine;
 }
 
 </style>

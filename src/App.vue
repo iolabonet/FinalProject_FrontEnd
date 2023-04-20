@@ -1,11 +1,10 @@
 <template>
   <header>
     <div class="wrapper">
-
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">SignIn</RouterLink>
-        <RouterLink to="/about">SignOut</RouterLink>
+        <RouterLink to="/auth/sign-in">SignIn</RouterLink>
+        <RouterLink to="/auth/sign-up">SignUp</RouterLink>
       </nav>
     </div>
   </header>
@@ -15,7 +14,6 @@
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import HomeView from './components/HomeView.vue'
 </script>
 
 

@@ -1,12 +1,23 @@
+<!-- Feature: Log out from the app
+  Background: As a user, I want to be able to log out from the app
+    Given I am logged in to the app
+ 
+Scenario: As a user, I want to log out
+  When I am viewing the home screen
+  And I click the log out button 
+  Then I expect to be logged out of the app
+  And I expect to see the login page -->
+
 <template>
   <main>
-    <HomeView />
-    <h1>Final Project from iola</h1>
+    <h1>my-todo-project by iola</h1>
   </main>
+
 </template>
 
 <script setup>
-import HomeView from '../components/HomeView.vue'
+import Nav from '../components/Nav.vue';
+import Footer from '../components/Footer.vue';
 
 </script>
 

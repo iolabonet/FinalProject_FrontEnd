@@ -1,48 +1,49 @@
 import { defineStore } from "pinia";
-import supabase from '@supabase/supabase-js';
+import supabase from '@/supabase';
 
-export default defineStore('userStore', {
+export default defineStore('user', {
     state: () => ({
-        user: undefined,
+        user: null,
     }),
 
     actions: {
         async fetchuser() {
-            const user = await supabase.AuthApiError.user();
+            const user = await supabase.auth.user();
             this.user = user;
         },
         async signUp(email, password) {
-            const { user, error } = await supabase.AuthApiError.signUp({
-                email,
-                password,
+            const { user, error } = await supabase.auth.signUp({
+                email: email,
+                password: password
             });
             if (error) throw error;
             if (user) this.user = user;
         },
         async signIn(email, password) {
-            const { user, error } = await supabase.AuthApiError.signIn({
-                email,
-                password,
+            const { user, error } = await supabase.auth.signIn({
+                email: email,
+                password: password
             });
             if (error) throw error;
             if (user) this.user = user;
         },
-        async signUp(email, password) {
-            const { user, error } = await supabase.AuthApiError.signUp(), {
-                if (error) { throw error;
-            this.user = null;
+        async signOut(email, password) {
+            const { user, error } = await supabase.auth.signOut({
+            });
+            if (error) {
+                throw error;
+                this.user = null;
+            };
         },
-    },
 
-    persist: {
-        enabled: Boolean,
-        stategies: [
-            {
-                key: 'user',
-                Storage: localStorage,
-            }
-        ]
+        persist: {
+            enabled: true,
+            stategies: [
+                {
+                    key: 'user',
+                    Storage: localStorage,
+                }
+            ]
+        },
     }
-
-}},
 });
