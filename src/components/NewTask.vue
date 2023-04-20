@@ -20,10 +20,8 @@ Scenario: As a logged-in user I want to create a new task
   </div>
 </template>
 
-<script>
-export default {
+<script setup>
 
-}
 </script>
 
 <style scoped>

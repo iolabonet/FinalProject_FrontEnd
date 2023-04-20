@@ -3,8 +3,8 @@
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/auth/sign-in">SignIn</RouterLink>
-        <RouterLink to="/auth/sign-up">SignUp</RouterLink>
+        <RouterLink to="/auth/sign-in">AuthView</RouterLink>
+        <RouterLink to="/auth/sign-up">Tasks</RouterLink>
       </nav>
     </div>
   </header>

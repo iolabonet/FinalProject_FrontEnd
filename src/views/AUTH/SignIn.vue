@@ -11,49 +11,40 @@ Scenario: As a user, I want to log in to the app
   And I expect to see the home screen -->
 
 <template>
-<div class="login">
+  <div class="login">
     <h1>LOGIN</h1>
-    <input type="handleSignIn">
+    <input type="handleSignIn" />
     <button type="success" @click="handleSignIn">SignIn</button>
     <RouterLink to="/auth/sign-up">SignUp</RouterLink>
-</div>
+  </div>
 </template>
 
-<script>
+<script setup>
 import { RouterLink } from 'vue-router'
-import { mapState, mapActions } from 'pinia';
-import userStore from '@/stores/user';
+import { mapState, mapActions } from 'pinia'
+import useUserStore from '@/stores/user'
 // import { Check, Delete, Edit, Message, Search, Star } from '@element-plus/icons-vue';
 
-export default {
-    name: 'SignIn',
-    computed: {
-        ...mapState(userStore, ['user']),
-    },
-    methods: {
-        ...mapActions(userStore, ['SignIn']),
-        handleSignIn(){
-            const userData = {
-                email: 'iolabonet.atg@gmail.com',
-                password: 'Carlota',
-            };
-            this.SignIn(userData.email, userData.password);
-        },
-    },
-};
+const userStore = useUserStore()
+function handleSignIn() {
+  const userData = {
+    email: 'iolabonet.atg@gmail.com',
+    password: 'Carlota'
+  }
+  userStore.SignIn(userData.email, userData.password)
+}
 </script>
 
 <style scoped>
 h1 {
-    padding: 2rem;
+  padding: 1rem;
 }
 
-input{
-    width: fit-content;
+input {
+  width: fit-content;
 }
 
 button {
-    background-color: aquamarine;
+  background-color: aquamarine;
 }
-
 </style>

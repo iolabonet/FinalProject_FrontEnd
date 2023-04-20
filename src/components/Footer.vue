@@ -2,10 +2,8 @@
   <p>Something To Do by iola ♡</p>
 </template>
 
-<script>
-export default {
+<script setup>
 
-}
 </script>
 
 <style>

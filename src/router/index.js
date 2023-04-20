@@ -8,6 +8,17 @@ import Page404 from '@/views/Page404.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // {
+    //   router.beforeEach(async (to) => {
+    //     const { name } = to
+    //     const store = UserStore();
+    //     const store.fetchUser();
+    //     const { user } = store
+
+    //     if (!isAuthenticaded && !to.name !== 'Login')
+
+    //   })
+    // },
     {
       path: '/',
       name: 'home',
@@ -27,24 +38,25 @@ const router = createRouter({
         component: SignIn,
       }],
     },
+    // {
+      //   path: '/task',
+      //   name: 'task',
+      //   component: NewTask,
+      //   children: [{
+      //     path: 'New-task',
+      //     name: 'New-task',
+      //     component: NewTask,
+      //   }, {
+      //     path: 'Task-item',
+      //     name: 'Task-item',
+      //     component: TaskItem,
+      //   }],
+      // },
     {
       path: '/:pathMatch(.*)*',
       component: Page404,
     },
-    // {
-    //   path: '/task',
-    //   name: 'task',
-    //   component: NewTask,
-    //   children: [{
-    //     path: 'New-task',
-    //     name: 'New-task',
-    //     component: NewTask,
-    //   }, {
-    //     path: 'Task-item',
-    //     name: 'Task-item',
-    //     component: TaskItem,
-    //   }],
-    // },
+    
   ]
 })
 

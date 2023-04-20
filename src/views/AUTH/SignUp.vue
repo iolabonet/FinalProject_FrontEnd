@@ -17,8 +17,8 @@ Scenario: As a user, I want to create an account
     <h1>Sign Up!</h1>
   </template>
   
-  <script>
-  export default {
+  <script setup>
+               {
   
   }
   </script>

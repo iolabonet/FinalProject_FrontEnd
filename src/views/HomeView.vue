@@ -10,7 +10,7 @@ Scenario: As a user, I want to log out
 
 <template>
   <main>
-    <h1>my-todo-project by iola</h1>
+    <h1>my To Do project by iola</h1>
   </main>
 
 </template>
@@ -23,4 +23,5 @@ import Footer from '../components/Footer.vue';
 
 
 <style scoped>
+
 </style>

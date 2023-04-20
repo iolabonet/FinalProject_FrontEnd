@@ -43,8 +43,8 @@
   </div>
 </template>
 
-<script>
-export default {
+<script setup>
+ const taskItem = {
   data: {
     tasks: [
       {
