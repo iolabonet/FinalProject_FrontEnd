@@ -78,4 +78,22 @@
 div {
   background-image: url(../assets/images/post_it_yellow.png);
 }
+
+input {
+    margin-top: 0.5rem;
+}
+input::placeholder {
+    font-weight: bold;
+    opacity: 0.5;
+    color: blue;
+}
+
+/*MOBILE*/
+@media (max-width: 767px) {}
+
+/*TABLET*/
+@media (min-width: 768px) and (max-width: 1023px) {}
+
+/*MOBILE Y TABLET*/
+@media (max-width: 1023px) {}
 </style>

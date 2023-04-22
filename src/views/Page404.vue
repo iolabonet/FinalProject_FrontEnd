@@ -25,6 +25,7 @@ div{
   justify-content: center;
   width: fit-content;
   height: fit-content;
+  cursor: pointer;
 }
 img{
   width: 75%;

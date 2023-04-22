@@ -46,5 +46,6 @@ input {
 
 button {
   background-color: aquamarine;
+  cursor: pointer;
 }
 </style>

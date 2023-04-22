@@ -11,8 +11,8 @@ Scenario: As a logged-in user I want to create a new task
 
 <template>
   <div>
-  <h1>newTask</h1>
-  <input class="newTask">
+    <h1>newTask</h1>
+    <input class="newTask">
     <b-form @submit.stop.prevent="alert('Form Submitted')">
       <b-form-input aria-label="Input" class="mr-1" placeholder="Title"></b-form-input>
       <b-button type="submit">Add Task</b-button>
@@ -26,16 +26,25 @@ Scenario: As a logged-in user I want to create a new task
 
 <style scoped>
 div {
-    background-image: url(../assets/images/post_it_Blue.png);
-} 
+  background-image: url(../assets/images/post_it_Blue.png);
+}
+
 input {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
+
 input::placeholder {
-    font-weight: bold;
-    opacity: 0.5;
-    color: blue;
+  font-weight: bold;
+  opacity: 0.5;
+  color: blue;
 }
 
+/*MOBILE*/
+@media (max-width: 767px) {}
 
+/*TABLET*/
+@media (min-width: 768px) and (max-width: 1023px) {}
+
+/*MOBILE Y TABLET*/
+@media (max-width: 1023px) {}
 </style>

@@ -10,7 +10,8 @@ Scenario: As a user, I want to log out
 
 <template>
   <main>
-    <h1>my To Do project by iola</h1>
+    <!-- <h1> {{ fullName }} </h1> -->
+    
   </main>
 
 </template>
@@ -18,6 +19,27 @@ Scenario: As a user, I want to log out
 <script setup>
 import Nav from '../components/Nav.vue';
 import Footer from '../components/Footer.vue';
+// import { METHODS } from "http";
+// import { useCssVars } from "vue"
+
+//   return {
+//     title: 'Wellcome',
+//     user: {
+//       nikName: '',
+//       email: '',
+//       psw: '',
+//     }
+//     methods: {
+//       saludar(nikName) {
+//       alert('Wellcome' + nikName + )
+//       },
+//     computed: {
+//       fullName() {
+//         return this.user.nikName
+//         }
+//     }
+//     }
+// }
 
 </script>
 

@@ -7,8 +7,9 @@ export default defineStore('user', {
     }),
 
     actions: {
-        async fetchuser() {
-            const user = await supabase.auth.user();
+        async fetchUser() {
+            const { data: { user }} = await supabase.auth.getUser();
+            console.log(user)
             this.user = user;
         },
         async signUp(email, password) {

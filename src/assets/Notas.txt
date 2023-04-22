@@ -1,0 +1,32 @@
+AGRANDAR TEXTO: 
+      https://es.vuejs.org/v2/guide/components.html 
+      <button v-on:click="$emit('enlarge-text')"></button>
+
+TASK_DB_NAME
+
+PLANTILLA para Components:
+      <template>
+        
+      </template>
+
+      <script setup>
+          
+      </script>
+
+      <style scoped>
+
+      /*MOBILE*/
+      @media (max-width: 767px) {
+        
+      }
+
+      /*TABLET*/
+      @media (min-width: 768px) and (max-width: 1023px) {
+        
+      }
+
+      /*MOBILE Y TABLET*/
+      @media (max-width: 1023px) {
+
+      }
+      </style>

@@ -1,24 +1,14 @@
-import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '@/views/HomeView.vue';
+import Page404 from '@/views/Page404.vue';
 import AuthView from '@/views/auth/AuthView.vue';
 import SignIn from '@/views/auth/SignIn.vue';
 import SignUp from '@/views/auth/SignUp.vue';
-import Page404 from '@/views/Page404.vue';
+import userStore from '@/stores/user.js';
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    // {
-    //   router.beforeEach(async (to) => {
-    //     const { name } = to
-    //     const store = UserStore();
-    //     const store.fetchUser();
-    //     const { user } = store
-
-    //     if (!isAuthenticaded && !to.name !== 'Login')
-
-    //   })
-    // },
     {
       path: '/',
       name: 'home',
@@ -32,65 +22,41 @@ const router = createRouter({
         path: 'sign-up',
         name: 'sign-up',
         component: SignUp,
-      }, {
+      },
+      {
         path: 'sign-in',
         name: 'sign-in',
         component: SignIn,
       }],
     },
     // {
-      //   path: '/task',
-      //   name: 'task',
-      //   component: NewTask,
-      //   children: [{
-      //     path: 'New-task',
-      //     name: 'New-task',
-      //     component: NewTask,
-      //   }, {
-      //     path: 'Task-item',
-      //     name: 'Task-item',
-      //     component: TaskItem,
-      //   }],
-      // },
+    //   path: '/task',
+    //   name: 'task',
+    //   component: NewTask,
+    //   children: [{
+    //     path: 'New-task',
+    //     name: 'New-task',
+    //     component: NewTask,
+    //   }, {
+    //     path: 'Task-item',
+    //     name: 'Task-item',
+    //     component: TaskItem,
+    //   }],
+    // },
     {
       path: '/:pathMatch(.*)*',
       component: Page404,
     },
-    
   ]
 })
 
-export default router
+router.beforeEach(async (to) => {
+  const useUserStore = userStore()
+  await useUserStore.fetchUser() 
+  const { user } = useUserStore
+  if (!user && to.name !== 'sign-in' && to.name !== 'sign-up') {
+    return { path: '/auth/sign-in' };
+  }
+})
 
-// App.js
-// <template>
-//   <section>
-//     <router-view class="app-main" /> <!-- your routes will load inside of these tags -->    
-//   </section>
-// </template>
- 
-// <script setup>
-// import { onMounted } from 'vue'
-// import { storeToRefs } from 'pinia'
-// import { useRouter } from 'vue-router'
-// import { useUserStore } from './store/user.js'
- 
-// const router = useRouter()
-// const userStore = useUserStore()
-// const { user } = storeToRefs(userStore)
- 
-// onMounted(async () => {
-//   try {
-//     await userStore.fetchUser() // here we call fetch user
-//     if (!user.value) {
-//       // redirect them to logout if the user is not there
-//       router.push({ path: '/auth' });
-//     } else {
-//       // continue to dashboard
-//       router.push({ path: '/' });
-//     }
-//   } catch (e) {
-//     console.log(e)
-//   }
-// })
-// </script>
+export default router
