@@ -1,4 +1,7 @@
+<!-- My To Do App -->
+
 <template>
+  <h1>My {{ nikName }} To Do App</h1>
     <div>
       <b-nav pills>
         <b-nav-item href="#1" active>Home</b-nav-item>
@@ -14,6 +17,9 @@
 </script>
 
 <style scoped>
+@import url('bootstrap/dist/css/bootstrap.min.css0');
+
+
 
 /*MOBILE*/
 @media (max-width: 767px) {

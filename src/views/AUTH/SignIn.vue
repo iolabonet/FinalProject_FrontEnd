@@ -16,13 +16,14 @@ Scenario: As a user, I want to log in to the app
     <input type="handleSignIn" />
     <button type="success" @click="handleSignIn">SignIn</button>
     <RouterLink to="/auth/sign-up">SignUp</RouterLink>
+   <!-- <Page404 />  -->
   </div>
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router'
-import { mapState, mapActions } from 'pinia'
-import useUserStore from '@/stores/user'
+import useUserStore from '@/stores/user';
+import { RouterLink } from 'vue-router';
+// import Page404 from '../Page404.vue';
 // import { Check, Delete, Edit, Message, Search, Star } from '@element-plus/icons-vue';
 
 const userStore = useUserStore()

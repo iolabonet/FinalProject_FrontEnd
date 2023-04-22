@@ -1,10 +1,18 @@
+<!-- Step By Step 
+1. Import
+2. Add to Components
+3. Add to template-->
+
+
 <template>
   <header>
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
+        <RouterLink class="" to="/">To Do list by iola</RouterLink>
         <RouterLink to="/auth/sign-in">AuthView</RouterLink>
         <RouterLink to="/auth/sign-up">Tasks</RouterLink>
+        
       </nav>
     </div>
   </header>
@@ -12,9 +20,14 @@
   <RouterView />
 </template>
 
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-
+<script>
+import { RouterLink, RouterView } from 'vue-router';
+export default {
+  name: "Nav",
+  components: {
+    RouterLink,
+  }
+};
 
 </script>
 

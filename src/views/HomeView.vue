@@ -11,18 +11,17 @@ Scenario: As a user, I want to log out
 <template>
   <main>
     <!-- <h1> {{ fullName }} </h1> -->
-    
-  </main>
 
+  </main>
 </template>
 
 <script setup>
-import Nav from '../components/Nav.vue';
-import Footer from '../components/Footer.vue';
 // import { METHODS } from "http";
 // import { useCssVars } from "vue"
 
-//   return {
+// Retornar el nombre de usuario options API:
+// data(){  
+//  return {
 //     title: 'Wellcome',
 //     user: {
 //       nikName: '',
@@ -32,18 +31,16 @@ import Footer from '../components/Footer.vue';
 //     methods: {
 //       saludar(nikName) {
 //       alert('Wellcome' + nikName + )
-//       },
+//     },
 //     computed: {
 //       fullName() {
 //         return this.user.nikName
-//         }
+//       }
 //     }
-//     }
-// }
+//  }
+//}
 
 </script>
 
 
-<style scoped>
-
-</style>
+<style scoped></style>

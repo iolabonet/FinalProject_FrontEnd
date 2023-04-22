@@ -1,50 +1,51 @@
-import { defineStore } from "pinia";
 import supabase from '@/supabase';
+import { defineStore } from "pinia";
 
 export default defineStore('user', {
     state: () => ({
         user: null,
     }),
-
     actions: {
         async fetchUser() {
-            const { data: { user }} = await supabase.auth.getUser();
-            console.log(user)
+            const { data: { user } } = await supabase.auth.getUser();
             this.user = user;
         },
         async signUp(email, password) {
-            const { user, error } = await supabase.auth.signUp({
-                email: email,
-                password: password
-            });
+            const { data, error } = await supabase.auth.signUp({
+                email: '',
+                password: '',
+                options: {
+                    data: {
+                        nikName: '',
+                    }
+                }
+            })
             if (error) throw error;
             if (user) this.user = user;
         },
         async signIn(email, password) {
-            const { user, error } = await supabase.auth.signIn({
-                email: email,
-                password: password
-            });
+            const { data, error } = await supabase.auth.signInWithPassword({
+                email: '',
+                password: '',
+            })
             if (error) throw error;
             if (user) this.user = user;
         },
         async signOut(email, password) {
-            const { user, error } = await supabase.auth.signOut({
-            });
-            if (error) {
-                throw error;
-                this.user = null;
-            };
-        },
+            const { error } = await supabase.auth.signOut()
+        }
+    },
 
-        persist: {
-            enabled: true,
-            stategies: [
-                {
-                    key: 'user',
-                    Storage: localStorage,
-                }
-            ]
-        },
-    }
-});
+    persist: {
+        enabled: true,
+        stategies: [
+            {
+                key: 'user',
+                Storage: localStorage,
+            }
+        ]
+    },
+},
+)
+
+

@@ -18,6 +18,8 @@
 </script>
 
 <style scoped>
+@import url('bootstrap/dist/css/bootstrap.min.css0');
+/* TO DO: Ver las tasks pendientes en carrusel */
 
 /*MOBILE*/
 @media (max-width: 767px) {

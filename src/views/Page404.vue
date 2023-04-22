@@ -12,10 +12,9 @@ export default {
   name: "App",
   methods: {
     goToHomePage(){
-      this.$router.push("/home");
+      this.$router.push("/");
     }
   }
-
 }
 </script>
 

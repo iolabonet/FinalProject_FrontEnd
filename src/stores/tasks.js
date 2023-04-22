@@ -1,5 +1,4 @@
-import { ref, computed, defineAsyncComponent } from 'vue'
-import { defineStore } from 'pinia'
+import { defineStore } from 'pinia';
 import { supabase } from '../supabase/index';
 import useUserStore from './user';
 

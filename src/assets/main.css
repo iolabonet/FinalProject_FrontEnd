@@ -1,6 +1,6 @@
 @import './base.css';
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:700|Roboto:100,300,700');
-@import url('bootstrap/dist/css/bootstrap.min.css0');
+
 
 #app {
   max-width: 1280px;

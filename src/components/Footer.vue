@@ -7,6 +7,7 @@
 </script>
 
 <style scoped>
+@import url('bootstrap/dist/css/bootstrap.min.css0');
 
 /*MOBILE*/
 @media (max-width: 767px) {
