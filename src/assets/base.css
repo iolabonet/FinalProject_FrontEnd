@@ -10,7 +10,10 @@
 }
 
 body {
-  min-height: 100vh;
+background-color: black;
+font-family: 'roboto';
+color: azure;
+  /* min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);
   transition: color 0.5s, background-color 0.5s;
@@ -20,5 +23,5 @@ body {
   font-size: 15px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -moz-osx-font-smoothing: grayscale; */
 }

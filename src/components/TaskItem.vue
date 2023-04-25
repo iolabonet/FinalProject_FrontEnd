@@ -43,7 +43,7 @@
   </div>
 </template>
 
-<script setup>
+<script>
  const taskItem = {
   data: {
     tasks: [

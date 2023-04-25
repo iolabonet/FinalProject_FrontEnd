@@ -20,7 +20,7 @@ Scenario: As a logged-in user I want to create a new task
   </div>
 </template>
 
-<script setup>
+<script>
 
 </script>
 

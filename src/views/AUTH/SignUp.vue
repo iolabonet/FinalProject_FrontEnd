@@ -14,13 +14,15 @@ Scenario: As a user, I want to create an account
   And I expect to see the home screen -->
 
 <template>
-  <h1>Sign Up!</h1>
+  <h1>LoginForm</h1>
 </template>
   
-<script setup>
-{
+<script>
+// import { LoginForm } from '@/components/LoginForm.vue';
 
-}
+// export default {
+//   name: "App",
+//   components: {
 </script>
   
 <style></style>

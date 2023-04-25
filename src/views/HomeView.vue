@@ -11,11 +11,11 @@ Scenario: As a user, I want to log out
 <template>
   <main>
     <!-- <h1> {{ fullName }} </h1> -->
-
+    <taskItem />
   </main>
 </template>
 
-<script setup>
+<script>
 // import { METHODS } from "http";
 // import { useCssVars } from "vue"
 

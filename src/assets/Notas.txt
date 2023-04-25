@@ -9,7 +9,7 @@ PLANTILLA para Components:
         
       </template>
 
-      <script setup>
+      <script>
           
       </script>
 
@@ -30,3 +30,82 @@ PLANTILLA para Components:
 
       }
       </style>
+
+Form with bootstrap:
+   template:   
+      <b-form  @submit.stop.prevent>
+      <label for="feedback-user">User ID</label>
+      <b-form-input v-model="userId" :state="validation" id="feedback-user"></b-form-input>
+      <b-form-invalid-feedback :state="validation">
+        Your user ID must be 5-12 characters long.
+      </b-form-invalid-feedback>
+      <b-form-valid-feedback :state="validation">
+        Looks Good.
+      </b-form-valid-feedback>
+      </b-form>
+
+   script:
+   export default {
+    data() {
+      return {
+        userId: ''
+      }
+    },
+    computed: {
+      validation() {
+        return this.userId.length > 4 && this.userId.length < 13
+      }
+    }
+  }
+
+   style:
+    
+.formContact {
+  width: 611px;
+  height: 80px;
+  display: flex;
+  margin-top: 50px;
+}
+
+.formMail {
+  color: #FFFFFF;
+  width: 100%;
+  height: 80px;
+}
+
+.boxMail {
+  display: flex;
+  width: 393px;
+  height: 80px;
+  border: 0px;
+  text-align: left;
+  padding-left: 50px;
+}
+
+#formContact {
+  width: 90%;
+  background-image: url(./Assets/newsletter/icon/mail.svg);
+  background-size: 30px;
+  background-repeat: no-repeat;
+  text-align: left;
+  background-position: left;
+}
+
+input {
+  text-align: left;
+  padding-left: 75px;
+}
+
+.btnForm {
+  border: 0px;
+  background-color: #072AC8;
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500px;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: center;
+  padding: 15px 36px;
+}
+

@@ -1,15 +1,3 @@
-<!-- Feature: Log in to the app
-  Background: As a user, I want to log in to the to-do app
-    Given I already have an account
-
-Scenario: As a user, I want to log in to the app
-  When I visit the login page
-  And I enter my email as "test@example.co.uk"
-  And I enter my password as "****"
-  And I click the Log In button
-  Then I expect to be logged in to the app 
-  And I expect to see the home screen -->
-
 <!-- Feature: Create an account  
   Background: As a new user, I want to register with the to-do app
     Given I do not have an account
@@ -25,94 +13,179 @@ Scenario: As a user, I want to create an account
   Then I expect to be logged in to the app 
   And I expect to see the home screen -->
 
-<template>  
-  <div>
-    <b-form  @submit.stop.prevent>
-      <label for="feedback-user">User ID</label>
-      <b-form-input v-model="userId" :state="validation" id="feedback-user"></b-form-input>
-      <b-form-invalid-feedback :state="validation">
-        Your user ID must be 5-12 characters long.
-      </b-form-invalid-feedback>
-      <b-form-valid-feedback :state="validation">
-        Looks Good.
-      </b-form-valid-feedback>
-     </b-form>
+<!-- Feature: Log in to the app
+  Background: As a user, I want to log in to the to-do app
+  Given I already have an account
 
-    <button class="btnForm" @click="userId = !userId">User</button>
-    <h1 v-if="awesome">User exists!</h1>
-    <h1 v-else>Oh no 😢</h1>
+Scenario: As a user, I want to log in to the app
+  When I visit the login page
+  And I enter my email as "test@example.co.uk"
+  And I enter my password as "****"
+  And I click the Log In button
+  Then I expect to be logged in to the app 
+  And I expect to see the home screen -->
 
+<template>
+  <!-- https://codepen.io/rpandrews/pen/XWbjJEg -->
+  <div class="login-page">
+    <transition name="fade">
+      <div v-if="!registerActive" class="wallpaper-login"></div>
+    </transition>
+    <div class="wallpaper-register"></div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
+          <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
+            <h1>Sign In</h1>
+            <form class="form-group">
+              <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
+            <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
+            <input type="submit" class="btn btn-primary" @click="doLogin">
+              <p>Don't have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign
+                  up here</a>
+              </p>
+              <p><a href="#">Forgot your password?</a></p>
+            </form>
+          </div>
+
+          <div v-else class="card register" v-bind:class="{ error: emptyFields }">
+            <h1>Sign Up</h1>
+            <form class="form-group">
+              <input v-model="emailReg" type="email" class="form-control" placeholder="Email" required>
+              <input v-model="passwordReg" type="password" class="form-control" placeholder="Password" required>
+              <input v-model="confirmReg" type="password" class="form-control" placeholder="Confirm Password" required>
+              <input type="submit" class="btn btn-primary" @click="doRegister">
+              <p>Already have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign
+                  in here</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
+  <!-- <button class="btnForm" @click="userId = !userId">User</button>
+          <h1 v-if="awesome">User exists!</h1>
+          <h1 v-else>Oh no 😢</h1> -->
 </template>
 
 <script>
 export default {
-    data() {
-      return {
-        userId: ''
+  data() {
+    return {
+      registerActive: false,
+      emailLogin: "",
+      passwordLogin: "",
+      emailReg: "",
+      passwordReg: "",
+      confirmReg: "",
+      emptyFields: false
+    }
+  },
+
+  methods: {
+    doLogin() {
+      if (this.emailLogin === "" || this.passwordLogin === "") {
+        this.emptyFields = true;
+      } else {
+        alert("You are now logged in");
       }
     },
-    computed: {
-      validation() {
-        return this.userId.length > 4 && this.userId.length < 13
+
+    doRegister() {
+      if (this.emailReg === "" || this.passwordReg === "" || this.confirmReg === "") {
+        this.emptyFields = true;
+      } else {
+        alert("You are now registered");
       }
     }
   }
+}
+
 </script>
 
 <style scoped>
+p {
+  line-height: 1rem;
+}
+
+.card {
+  padding: 20px;
+}
+
+/* .form-group {
+  input {
+    margin-bottom: 20px;
+  }
+} */
+
+.login-page {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+
+  /* .wallpaper-login {
+    background: url(https://images.pexels.com/photos/32237/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center;
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  } */
+
+  /* .fade-enter-active
+  .fade-leave-active {
+    transition: opacity .5s;
+  } */
+
+  /* .fade-enter,
+  .fade-leave-to {
+    opacity: 0;
+  } */
+
+  /* .wallpaper-register {
+    background: url(https://images.pexels.com/photos/533671/pexels-photo-533671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center;
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  } */
+
+  /* h1 {
+    margin-bottom: 1.5rem;
+  } */
+}
+
+.error {
+  animation-name: errorShake;
+  animation-duration: 0.3s;
+}
+
+@keyframes errorShake {
+  0% {
+    transform: translateX(-25px);
+  }
+
+  25% {
+    transform: translateX(25px);
+  }
+
+  50% {
+    transform: translateX(-25px);
+  }
+
+  75% {
+    transform: translateX(25px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @import url('bootstrap/dist/css/bootstrap.min.css0');
-
-.formContact {
-  width: 611px;
-  height: 80px;
-  display: flex;
-  margin-top: 50px;
-}
-
-.formMail {
-  color: #FFFFFF;
-  width: 100%;
-  height: 80px;
-}
-
-.boxMail {
-  display: flex;
-  width: 393px;
-  height: 80px;
-  border: 0px;
-  text-align: left;
-  padding-left: 50px;
-}
-
-#formContact {
-  width: 90%;
-  background-image: url(./Assets/newsletter/icon/mail.svg);
-  background-size: 30px;
-  background-repeat: no-repeat;
-  text-align: left;
-  background-position: left;
-}
-
-input {
-  text-align: left;
-  padding-left: 75px;
-}
-
-.btnForm {
-  border: 0px;
-  background-color: #072AC8;
-  color: #FFFFFF;
-  text-decoration: none;
-  font-size: 17px;
-  font-weight: 500px;
-  line-height: 22px;
-  letter-spacing: 0em;
-  text-align: center;
-  padding: 15px 36px;
-}
-
 
 /*MOBILE*/
 @media (max-width: 767px) {}

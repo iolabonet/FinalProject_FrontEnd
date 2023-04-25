@@ -3,37 +3,43 @@
 2. Add to Components
 3. Add to template-->
 
-
 <template>
   <header>
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink class="" to="/">To Do list by iola</RouterLink>
-        <RouterLink to="/auth/sign-in">AuthView</RouterLink>
-        <RouterLink to="/auth/sign-up">Tasks</RouterLink>
-        
+        <RouterLink to="/auth">Auth</RouterLink>
+        <RouterLink to="/tasks">Tasks</RouterLink>
       </nav>
     </div>
   </header>
 
   <RouterView />
+
 </template>
 
 <script>
 import { RouterLink, RouterView } from 'vue-router';
+import { mapActions } from 'pinia';
+import UserStore  from '@/stores/user.js';
+
 export default {
-  name: "Nav",
+  name: "App",
   components: {
     RouterLink,
+    RouterView,
+  },
+  methods: {
+    ...mapActions(UserStore, ['fetchUser'])
+  },
+ async created(){
+    await this.fetchUser()
   }
-};
-
+}
 </script>
 
-
-
 <style scoped>
+
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -41,13 +47,13 @@ header {
 
 nav {
   width: 100%;
-  font-size: 12px;
+  font-size: 1em;
   text-align: center;
   margin-top: 2rem;
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text, grey);
+  color: var(--color-text, white);
 }
 
 nav a.router-link-exact-active:hover {
@@ -56,6 +62,8 @@ nav a.router-link-exact-active:hover {
 
 nav a {
   display: inline-block;
+  color: white;
+  font-weight: 700;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
 }
@@ -67,19 +75,19 @@ nav a:first-of-type {
 @media (min-width: 1024px) {
   header {
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    place-items: center; 
+    /* padding-right: calc(var(--section-gap) / 2); */
   }
 
   header .wrapper {
     display: flex;
-    place-items: flex-start;
+    /* place-items: flex-start;  */
     flex-wrap: wrap;
   }
 
   nav {
-    text-align: left;
-    margin-left: -1rem;
+    text-align: center;
+    /* margin-left: -1rem; */
     font-size: 1rem;
 
     padding: 1rem 0;

@@ -4,7 +4,7 @@
 <RouterView> New Task</RouterView>        
 </template>
 
-<script setup>
+<script>
     
 </script>
 

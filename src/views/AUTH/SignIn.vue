@@ -14,25 +14,33 @@ Scenario: As a user, I want to log in to the app
   <div class="login">
     <h1>LOGIN</h1>
     <input type="handleSignIn" />
-    <button type="success" @click="handleSignIn">SignIn</button>
-    <RouterLink to="/auth/sign-up">SignUp</RouterLink>
-   <!-- <Page404 />  -->
+    <button type="success" @click="handleSignIn">Sign In</button>
+    <RouterLink to="/auth/sign-up">Sign Up</RouterLink>
+    <!-- <Page404 />  -->
   </div>
 </template>
 
-<script setup>
+<script>
 import useUserStore from '@/stores/user';
 import { RouterLink } from 'vue-router';
+import { mapActions } from 'pinia';
 // import Page404 from '../Page404.vue';
 // import { Check, Delete, Edit, Message, Search, Star } from '@element-plus/icons-vue';
-
-const userStore = useUserStore()
-function handleSignIn() {
-  const userData = {
-    email: 'iolabonet.atg@gmail.com',
-    password: 'Carlota'
-  }
-  userStore.SignIn(userData.email, userData.password)
+export default {
+  name: 'SignIn',
+  components: {
+    RouterLink,
+  },
+  methods: {
+    ...mapActions(useUserStore, ['SignIn']),
+    handleSignIn() {
+      const userData = {
+        email: 'iolabonet.atg@gmail.com',
+        password: 'Carlota'
+      }
+      this.SignIn(userData.email, userData.password)
+    }
+  },
 }
 </script>
 
@@ -42,10 +50,14 @@ h1 {
 }
 
 input {
-  width: fit-content;
+  display: flex;
+  width: 30%;
 }
 
 button {
+  width: 5rem;
+  height: 1.5rem;
+  font-weight: 800;
   background-color: aquamarine;
   cursor: pointer;
 }
