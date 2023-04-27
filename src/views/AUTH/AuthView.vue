@@ -1,8 +1,9 @@
 <template>
-  <main>
+  <LoginForm /> 
+  <!-- <main>
     <RouterView />
   </main>
-  <login-form />
+   -->
 </template>
   
 <script>
@@ -13,6 +14,7 @@ export default {
   name: 'Authview',
   components: {
     RouterView,
+    LoginForm,
   }
 }
 

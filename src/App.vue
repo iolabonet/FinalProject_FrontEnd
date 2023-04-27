@@ -13,17 +13,21 @@
         <RouterLink to="/tasks">Tasks</RouterLink>
       </nav>
     </div>
+    
   </header>
-
+  
   <RouterView />
+  
+  <Footer />
 
 </template>
 
 <script>
+import Footer from '@/components/Footer.vue';
+import NavBar from '@/components/NavBar.vue';
 import UserStore from '@/stores/user.js';
 import { mapActions } from 'pinia';
 import { RouterLink, RouterView } from 'vue-router';
-import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: "App",
@@ -31,6 +35,7 @@ export default {
     RouterLink,
     RouterView,
     NavBar,
+    Footer,
   },
   methods: {
     ...mapActions(UserStore, ['fetchUser'])

@@ -1,11 +1,13 @@
 <!-- v-if en templete-->
 
 <template>
-<RouterView> New Task</RouterView>        
+    <RouterView>
+        You have to log in to see your table tasks
+    </RouterView>
 </template>
 
 <script>
-    
+
 </script>
 
 
@@ -13,17 +15,11 @@
 @import url('bootstrap/dist/css/bootstrap.min.css');
 
 /*MOBILE*/
-@media (max-width: 767px) {
-  
-}
+@media (max-width: 767px) {}
 
 /*TABLET*/
-@media (min-width: 768px) and (max-width: 1023px) {
-  
-}
+@media (min-width: 768px) and (max-width: 1023px) {}
 
 /*MOBILE Y TABLET*/
-@media (max-width: 1023px) {
-
-}
+@media (max-width: 1023px) {}
 </style>

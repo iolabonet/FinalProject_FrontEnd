@@ -39,9 +39,10 @@ Scenario: As a user, I want to log in to the app
           <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
             <h1>Sign In</h1>
             <form class="form-group">
+              <input v-model="nikName" type="text" class="form-control" placeholder="NikName" required>
               <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
-            <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
-            <input type="submit" class="btn btn-primary" @click="doLogin">
+              <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
+              <input type="submit" class="btn btn-primary" @click="doLogin">
               <p>Don't have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign
                   up here</a>
               </p>
@@ -52,6 +53,7 @@ Scenario: As a user, I want to log in to the app
           <div v-else class="card register" v-bind:class="{ error: emptyFields }">
             <h1>Sign Up</h1>
             <form class="form-group">
+              <input v-model="nikName" type="text" class="form-control" placeholder="NikName" required>
               <input v-model="emailReg" type="email" class="form-control" placeholder="Email" required>
               <input v-model="passwordReg" type="password" class="form-control" placeholder="Password" required>
               <input v-model="confirmReg" type="password" class="form-control" placeholder="Confirm Password" required>
@@ -73,6 +75,7 @@ Scenario: As a user, I want to log in to the app
 
 <script>
 export default {
+  name: 'LoginForm',
   data() {
     return {
       emailLogin: "",
@@ -108,60 +111,51 @@ export default {
   }
 }
 
-
 </script>
 
 <style scoped>
 p {
   line-height: 1rem;
+  margin-top: 25px;
 }
 
 .card {
+  width: 44vh;
+  height: 50vh;
   padding: 20px;
+  background-color: rgb(51, 197, 197);
 }
 
-/* .form-group {
-  input {
-    margin-bottom: 20px;
-  }
-} */
+div.card.register {
+  gap: 2vh
+}
+
+.form-group {
+  height: 70%;
+  
+}
+.btn-primary {
+  margin-top: 25px;
+}
 
 .login-page {
+  margin-top: 5vh;
   align-items: center;
   display: flex;
-  height: 100vh;
-
-  /* .wallpaper-login {
-    background: url(https://images.pexels.com/photos/32237/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center;
-    background-size: cover;
-    height: 100%;
-    position: absolute;
-    width: 100%;
-  } */
-
-  /* .fade-enter-active
-  .fade-leave-active {
-    transition: opacity .5s;
-  } */
-
-  /* .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  } */
-
-  /* .wallpaper-register {
+  height: 50vh;
+  cursor: url(../assets/images/myHand.png);
+}
+   /* .wallpaper-register {
     background: url(https://images.pexels.com/photos/533671/pexels-photo-533671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center;
-    background-size: cover;
-    height: 100%;
+    height: 80em;
     position: absolute;
-    width: 100%;
+    width: 80em;
     z-index: -1;
   } */
 
-  /* h1 {
+  h1 {
     margin-bottom: 1.5rem;
-  } */
-}
+  }
 
 .error {
   animation-name: errorShake;
