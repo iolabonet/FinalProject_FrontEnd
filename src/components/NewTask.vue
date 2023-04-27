@@ -25,7 +25,7 @@ Scenario: As a logged-in user I want to create a new task
 </script>
 
 <style scoped>
-/* @import url('bootstrap/dist/css/bootstrap.min.css0'); */
+/* @import url('bootstrap/dist/css/bootstrap.min.css'); */
 
 div {
   background-image: url(../assets/images/post_it_Blue.png);

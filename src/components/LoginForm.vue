@@ -67,15 +67,14 @@ Scenario: As a user, I want to log in to the app
   </div>
 
   <!-- <button class="btnForm" @click="userId = !userId">User</button>
-          <h1 v-if="awesome">User exists!</h1>
-          <h1 v-else>Oh no 😢</h1> -->
+              <h1 v-if="awesome">User exists!</h1>
+              <h1 v-else>Oh no 😢</h1> -->
 </template>
 
 <script>
 export default {
   data() {
     return {
-      registerActive: false,
       emailLogin: "",
       passwordLogin: "",
       emailReg: "",
@@ -84,7 +83,12 @@ export default {
       emptyFields: false
     }
   },
-
+  props: {
+    registerActive: {
+      type: Boolean,
+      default: false,
+    },
+  },
   methods: {
     doLogin() {
       if (this.emailLogin === "" || this.passwordLogin === "") {
@@ -100,9 +104,10 @@ export default {
       } else {
         alert("You are now registered");
       }
-    }
+    },
   }
 }
+
 
 </script>
 
@@ -185,7 +190,7 @@ p {
   }
 }
 
-@import url('bootstrap/dist/css/bootstrap.min.css0');
+@import url('bootstrap/dist/css/bootstrap.min.css');
 
 /*MOBILE*/
 @media (max-width: 767px) {}

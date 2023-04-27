@@ -12,10 +12,12 @@ Scenario: As a user, I want to log in to the app
 
 <template>
   <div class="login">
-    <h1>LOGIN</h1>
-    <input type="handleSignIn" />
+    <h1>Hello _____ ^^!
+    </h1>
+    <!-- <input type="handleSignIn" />
     <button type="success" @click="handleSignIn">Sign In</button>
-    <RouterLink to="/auth/sign-up">Sign Up</RouterLink>
+    <RouterLink to="/auth/sign-up">Sign Up</RouterLink> -->
+    
     <!-- <Page404 />  -->
   </div>
 </template>

@@ -22,7 +22,8 @@ Scenario: As a user, I want to create an account
 
 // export default {
 //   name: "App",
-//   components: {
+//   components: { }
+
 </script>
   
 <style></style>

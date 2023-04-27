@@ -18,7 +18,7 @@
 </script>
 
 <style scoped>
-@import url('bootstrap/dist/css/bootstrap.min.css0');
+@import url('bootstrap/dist/css/bootstrap.min.css');
 /* TO DO: Ver las tasks pendientes en carrusel */
 
 /*MOBILE*/

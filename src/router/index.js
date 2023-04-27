@@ -1,11 +1,11 @@
+import NewTask from '@/components/NewTask.vue';
+import userStore from '@/stores/user.js';
 import HomeView from '@/views/HomeView.vue';
 import Page404 from '@/views/Page404.vue';
+import Tasks from '@/views/Tasks.vue';
 import AuthView from '@/views/auth/AuthView.vue';
 import SignIn from '@/views/auth/SignIn.vue';
 import SignUp from '@/views/auth/SignUp.vue';
-import Tasks from '@/views/Tasks.vue';
-import NewTask from '@/components/NewTask.vue';
-import userStore from '@/stores/user.js';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -14,7 +14,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: { 
+        requireAuth: true,
+      }
     },
     {
       path: '/auth',
@@ -43,7 +46,7 @@ const router = createRouter({
       ],
     },
     {
-      path: '/*',
+      path: '/:pathMatch(.*)*',
       component: Page404,
     },
   ]
@@ -52,8 +55,11 @@ router.beforeEach(async (to) => {
   const useUserStore = userStore()
   await useUserStore.fetchUser()
   const { user } = useUserStore
-  if (!user && to.name !== 'sign-in' && to.name !== 'sign-up') {
-    return { path: '/auth/sign-in' };
+  if (to.meta.requiresAuth && user === null) {
+    return { name: 'sign-in' }
+  }
+  if ((to.name === 'sign-in' || to.name === 'sign-up') && user !== null) {
+    return { name: 'home' }
   }
 })
 

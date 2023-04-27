@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 
 export default defineStore('user', {
     state: () => ({
-        user: null,
+        user: undefined,
     }),
     actions: {
         async fetchUser() {
@@ -11,9 +11,9 @@ export default defineStore('user', {
             this.user = user;
         },
         async signUp(email, password) {
-            const { data, error } = await supabase.auth.signUp({
-                email: '',
-                password: '',
+            const { data: { user }, error } = await supabase.auth.signUp({
+                email: email,
+                password: password,
                 options: {
                     data: {
                         nikName: '',
@@ -25,14 +25,16 @@ export default defineStore('user', {
         },
         async signIn(email, password) {
             const { data, error } = await supabase.auth.signInWithPassword({
-                email: '',
-                password: '',
+                email: email,
+                password: password,
             })
             if (error) throw error;
-            if (user) this.user = user;
+            if (data) this.user = data;
         },
-        async signOut(email, password) {
+        async signOut() {
             const { error } = await supabase.auth.signOut()
+            if (error) throw error;
+            this.user = null;
         }
     },
 

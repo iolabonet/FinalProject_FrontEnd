@@ -4,6 +4,7 @@
 3. Add to template-->
 
 <template>
+  <NavBar />
   <header>
     <div class="wrapper">
       <nav>
@@ -19,15 +20,17 @@
 </template>
 
 <script>
-import { RouterLink, RouterView } from 'vue-router';
+import UserStore from '@/stores/user.js';
 import { mapActions } from 'pinia';
-import UserStore  from '@/stores/user.js';
+import { RouterLink, RouterView } from 'vue-router';
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: "App",
   components: {
     RouterLink,
     RouterView,
+    NavBar,
   },
   methods: {
     ...mapActions(UserStore, ['fetchUser'])
