@@ -9,7 +9,7 @@
     <div class="wrapper">
       <nav>
         <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/auth/sign-in">Auth</RouterLink>
+        <RouterLink to="/auth/sign-in">Sign In</RouterLink>
         <RouterLink to="/tasks">Tasks</RouterLink>
       </nav>
     </div>
