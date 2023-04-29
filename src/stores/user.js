@@ -14,11 +14,6 @@ export default defineStore('user', {
             const { data: { user }, error } = await supabase.auth.signUp({
                 email: email,
                 password: password,
-                options: {
-                    data: {
-                        nikName: '',
-                    }
-                }
             })
             if (error) throw error;
             if (user) this.user = user;

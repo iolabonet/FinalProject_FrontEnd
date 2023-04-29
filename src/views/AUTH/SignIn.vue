@@ -17,31 +17,19 @@ Scenario: As a user, I want to log in to the app
     <!-- <input type="handleSignIn" />
     <button type="success" @click="handleSignIn">Sign In</button>
     <RouterLink to="/auth/sign-up">Sign Up</RouterLink> -->
-    
+
     <!-- <Page404 />  -->
   </div>
 </template>
 
 <script>
-import useUserStore from '@/stores/user';
 import { RouterLink } from 'vue-router';
-import { mapActions } from 'pinia';
 // import Page404 from '../Page404.vue';
 // import { Check, Delete, Edit, Message, Search, Star } from '@element-plus/icons-vue';
 export default {
   name: 'SignIn',
   components: {
     RouterLink,
-  },
-  methods: {
-    ...mapActions(useUserStore, ['SignIn']),
-    handleSignIn() {
-      const userData = {
-        email: 'iolabonet.atg@gmail.com',
-        password: 'Carlota'
-      }
-      this.SignIn(userData.email, userData.password)
-    }
   },
 }
 </script>

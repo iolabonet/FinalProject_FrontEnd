@@ -10,6 +10,12 @@ This template should help get you started developing with Vue 3 in Vite.
 
 ### Características, configuración y las especificaciones técnicas de la aplicación:
 
+An important tool to your Daily
+For personal and worker tasks
+Modernize your workflow
+Get work done early!
+Intelligently planned together.
+
 ### Los enlaces y documentación usada para la elaboración del proyecto.
 
 ### Links:

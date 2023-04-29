@@ -40,38 +40,47 @@
 <template>
   <div>
     <img src="../assets/images/dead_line.png" alt="DeadLine" />
+    <form class="form-group">
+      <input v-model="title" type="text" class="form-control" placeholder="Title" required>
+      <input v-model="deadLine" type="text" class="form-control" placeholder="deadLine" required>
+      <input v-model="priority" type="text" class="form-control" placeholder="priority" required>
+      <input type="submit" class="btn btn-primary" @click="addTask">
+    </form>
   </div>
 </template>
 
 <script>
- const taskItem = {
-  data: {
-    tasks: [
-      {
-        title: '',
-        category: '',
-        priority: '1 to 10', 
-        // TO DO: Insertar un num del uno al 10.
-        calendar: 'true or false',
-        Notes: '',
-        DeadLine: 'date',
-        Done: 'true or false'
-      }
-    ],
-    searchTerm: ''
-  },
-  computed: {
-    filteredTasks() {
-      let filteredTasks = this.tasks.filter((task) => {
-        return task.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-      })
-      let orderedTasks = filteredTasks.sort((a, b) => {
-        return b.priority - a.uppriority
-      })
-      return orderedTasks
-    }
-  }
-}
+// export default {
+//   name: 'TaskItem',
+//   const taskItem = {
+//     data: {
+//       tasks: [
+//         {
+//           title: '',
+//           category: '',
+//           priority: '1 to 10',
+//           // TO DO: Insertar un num del uno al 10.
+//           calendar: 'true or false',
+//           Notes: '',
+//           deadLine: 'date',
+//           Done: 'true or false'
+//         }
+//       ],
+//       searchTerm: ''
+//     },
+//     computed: {
+//       filteredTasks() {
+//         let filteredTasks = this.tasks.filter((task) => {
+//           return task.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+//         })
+//         let orderedTasks = filteredTasks.sort((a, b) => {
+//           return b.priority - a.uppriority
+//         })
+//         return orderedTasks
+//       }
+//     }
+//   }
+// }
 </script>
 
 <style scoped>
@@ -82,12 +91,13 @@ div {
 }
 
 input {
-    margin-top: 0.5rem;
+  margin-top: 0.5rem;
 }
+
 input::placeholder {
-    font-weight: bold;
-    opacity: 0.5;
-    color: blue;
+  font-weight: bold;
+  opacity: 0.5;
+  color: blue;
 }
 
 /*MOBILE*/

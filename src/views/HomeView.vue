@@ -60,6 +60,8 @@ Scenario: As a user, I want to log out
 
 <style scoped>
 .homePage {
+  width: 100%;
+  height: 80vh;
   background-image: url(../assets/images/post_it_Blue.png);
 
 }

@@ -39,10 +39,9 @@ Scenario: As a user, I want to log in to the app
           <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
             <h1>Sign In</h1>
             <form class="form-group">
-              <input v-model="nikName" type="text" class="form-control" placeholder="NikName" required>
               <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
               <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
-              <input type="submit" class="btn btn-primary" @click="doLogin">
+              <button type="button" class="btn btn-primary" @click="doLogin">Enviar</button>
               <p>Don't have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign
                   up here</a>
               </p>
@@ -53,11 +52,10 @@ Scenario: As a user, I want to log in to the app
           <div v-else class="card register" v-bind:class="{ error: emptyFields }">
             <h1>Sign Up</h1>
             <form class="form-group">
-              <input v-model="nikName" type="text" class="form-control" placeholder="NikName" required>
               <input v-model="emailReg" type="email" class="form-control" placeholder="Email" required>
               <input v-model="passwordReg" type="password" class="form-control" placeholder="Password" required>
               <input v-model="confirmReg" type="password" class="form-control" placeholder="Confirm Password" required>
-              <input type="submit" class="btn btn-primary" @click="doRegister">
+              <button type="button" class="btn btn-primary" @click="doRegister">Enviar</button>
               <p>Already have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign
                   in here</a>
               </p>
@@ -74,6 +72,8 @@ Scenario: As a user, I want to log in to the app
 </template>
 
 <script>
+import useUserStore from '@/stores/user';
+import { mapActions } from 'pinia';
 export default {
   name: 'LoginForm',
   data() {
@@ -93,19 +93,26 @@ export default {
     },
   },
   methods: {
-    doLogin() {
+    ...mapActions(useUserStore, ['signIn', 'signUp']),
+    async doLogin() {
       if (this.emailLogin === "" || this.passwordLogin === "") {
         this.emptyFields = true;
       } else {
-        alert("You are now logged in");
+       await this.signIn(this.emailLogin, this.passwordLogin)
+        this.$router.push({
+          name: 'tasks'
+        })
       }
     },
 
-    doRegister() {
+    async doRegister() {
       if (this.emailReg === "" || this.passwordReg === "" || this.confirmReg === "") {
         this.emptyFields = true;
       } else {
-        alert("You are now registered");
+      await this.signUp(this.emailReg, this.passwordReg)
+      this.$router.push({
+          name: 'tasks'
+        })
       }
     },
   }
@@ -132,8 +139,9 @@ div.card.register {
 
 .form-group {
   height: 70%;
-  
+
 }
+
 .btn-primary {
   margin-top: 25px;
 }
@@ -145,7 +153,8 @@ div.card.register {
   height: 50vh;
   cursor: url(../assets/images/myHand.png);
 }
-   /* .wallpaper-register {
+
+/* .wallpaper-register {
     background: url(https://images.pexels.com/photos/533671/pexels-photo-533671.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260) no-repeat center center;
     height: 80em;
     position: absolute;
@@ -153,9 +162,9 @@ div.card.register {
     z-index: -1;
   } */
 
-  h1 {
-    margin-bottom: 1.5rem;
-  }
+h1 {
+  margin-bottom: 1.5rem;
+}
 
 .error {
   animation-name: errorShake;

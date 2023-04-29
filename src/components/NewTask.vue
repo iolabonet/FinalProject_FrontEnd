@@ -15,9 +15,12 @@ Scenario: As a logged-in user I want to create a new task
     <input class="newTask">
     <b-form @submit.stop.prevent="alert('Form Submitted')">
       <b-form-input aria-label="Input" class="mr-1" placeholder="Title"></b-form-input>
-      <b-button type="submit">Add Task</b-button>
+      <b-button type="submit">Actions</b-button>
     </b-form>
   </div>
+  
+
+  
 </template>
 
 <script>
