@@ -29,32 +29,7 @@ Scenario: As a user, I want to log out
 </template>
 
 <script>
-// import { METHODS } from "http";
-// import { useCssVars } from "vue"
 
-// // Retornar el nombre de usuario options API:
-// export default {
-// name:'HomeView',
-//   data(){  
-//  return {
-//     title: 'Wellcome',
-//       user: '',
-//     // {
-//     //   nikName: '',
-//     //   email: '',
-//     //   psw: '',
-//     // },
-//     methods: {
-//       saludar(user) {
-//       alert('Wellcome' + user + )
-//     },
-//     computed: {
-//       fullName() {
-//         return this.user.nikName
-//       }
-//     }}
-//   }
-//   }}
 </script>
 
 

@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia';
 import { supabase } from '../supabase/index';
 import useUserStore from './user';
+import useTaskStore from './tasks';
 
-export const useTaskStore = defineStore('tasks', {
+export default useTaskStore = defineStore('tasks', {
   state: () => ({
     tasks: null,
   }),
@@ -18,6 +19,7 @@ export const useTaskStore = defineStore('tasks', {
         .select('*')
         .order('id', { ascending: false });
       this.tasks = tasks;
+      // if (tasks.lenght === 0) throw new Error ('Welldone you haven´t tasks TO DO!')
     },
 
     async addNewTasks(task) {

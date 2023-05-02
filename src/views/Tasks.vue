@@ -9,34 +9,10 @@
     <div>
       <!-- https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_tbody -->
       <h1>Tabla de tareas</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Comprar</td>
-            <td><button>borrar</button></td>
-          </tr>
-          <tr>
-            <td>Limpiar</td>
-            <td><button>borrar</button></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td>Titlefuncion añadir tarea</td>
-            <td><button>Add</button></td>
-            <!-- TO DO: Añadir funcion añadir tarea a API por user.Id -->
-          </tr>
-        </tfoot>
-      </table>
+      
     </div>
-    <!-- <TaskItem /> -->
-    
+    <TaskItem v-for="task in tasks" :key="task.id" class="task-list-item"></TaskItem>
+  
   </section>
   <section class="gif" v-else>
     <img src="../assets/images/1f92d_gif_ups.gif" alt="">
@@ -47,13 +23,12 @@
 <script>
 import useUserStore from '@/stores/user';
 import { mapActions, mapState } from 'pinia';
-
-// import TaskItem from '@/components/TaskItem.vue';
+import TaskItem from '@/components/TaskItem.vue';
 
 export default {
   name: 'Tasks',
   components: {
-    // TaskItem,
+    TaskItem,
   },
   computed: {
     ...mapState(useUserStore, ['user'])
@@ -68,7 +43,6 @@ export default {
     }
   },
 }
-
 
 </script>
 

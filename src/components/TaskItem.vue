@@ -38,49 +38,72 @@
     Then I expect to see that my task has been permanently removed from every list -->
 
 <template>
-  <div>
-    <img src="../assets/images/dead_line.png" alt="DeadLine" />
-    <form class="form-group">
-      <input v-model="title" type="text" class="form-control" placeholder="Title" required>
-      <input v-model="deadLine" type="text" class="form-control" placeholder="deadLine" required>
-      <input v-model="priority" type="text" class="form-control" placeholder="priority" required>
-      <input type="submit" class="btn btn-primary" @click="addTask">
+  <div class="app-container" id="taskItem">
+    <h1 class="app-header">MY LIST...</h1>
+
+    <form class="form-group" @submit.prevent="addTask">
+      <h3>ADD NEW TASK</h3>
+      <input v-model="title" type="text" class="form-control" placeholder="Name of task" required>
+      <button @click="addTask(task)" type="submit" class="addTask-btn" title="Add Task"></button>
     </form>
+
+    <table class="task-list">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Is completed ?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <!-- TO DO: orderedTasks = filteredTasks.sort((a, b) -->
+          
+          <td><button @click="editTaskBox(task)" class="edit-btn" title="Edit Task"></button></td>
+          <td><button @click="deleteTaskBox(task)" class="delete-btn" title="Delete Task"></button></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>Titlefuncion añadir tarea</td>
+          <!-- TO DO: Añadir funcion añadir tarea a API por user.Id -->
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="deleteTaskBox">
+      <img src="../assets/images/dead_line.png" alt="DeadLine" />
+    </div>
+
   </div>
 </template>
 
 <script>
-// export default {
-//   name: 'TaskItem',
-//   const taskItem = {
-//     data: {
-//       tasks: [
-//         {
-//           title: '',
-//           category: '',
-//           priority: '1 to 10',
-//           // TO DO: Insertar un num del uno al 10.
-//           calendar: 'true or false',
-//           Notes: '',
-//           deadLine: 'date',
-//           Done: 'true or false'
-//         }
-//       ],
-//       searchTerm: ''
-//     },
-//     computed: {
-//       filteredTasks() {
-//         let filteredTasks = this.tasks.filter((task) => {
-//           return task.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-//         })
-//         let orderedTasks = filteredTasks.sort((a, b) => {
-//           return b.priority - a.uppriority
-//         })
-//         return orderedTasks
-//       }
-//     }
-//   }
-// }
+import usetasksStore from '@/stores/tasks';
+import { mapActions, mapState } from 'pinia';
+export default {
+  name: 'TaskItem',
+  data() {
+    return {
+      // searchTerm: ''
+    }
+  },
+  computed: {
+    ...mapState(usetasksStore, ['tasks']),
+    filteredTasks() {
+      let filteredTasks = this.tasks.filter((task) => {
+        return task.title.toLowerCase().includes(this.searchTerm.toLowerCase())
+      })
+      let orderedTasks = filteredTasks.sort((a, b) => {
+        return b.priority - a.uppriority
+      })
+      return orderedTasks
+    }
+  },
+  methods: {
+    ...mapActions(usetasksStore, ['addNewTasks', 'removeTasks', 'updateTaskTitle']),
+  }
+}
+
 </script>
 
 <style scoped>
@@ -99,6 +122,28 @@ input::placeholder {
   opacity: 0.5;
   color: blue;
 }
+
+.app-container {
+  background-color: brown;
+}
+
+#taskItem {
+  background-color: yellowgreen;
+}
+
+.deleteTaskBox {
+  background-color: white;
+}
+
+.addTask-btn {
+  background-color: green;
+  /* TO DO: añadir una imagen sumar */
+}
+
+.deleteButton {
+  background-color: red;
+}
+
 
 /*MOBILE*/
 @media (max-width: 767px) {}

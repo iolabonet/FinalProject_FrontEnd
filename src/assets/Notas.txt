@@ -6,11 +6,9 @@ TASK_DB_NAME
 
 PLANTILLA para Components:
       <template>
-        
       </template>
 
-      <script>
-          
+      <script>    
       </script>
 
       <style scoped>
@@ -109,3 +107,29 @@ input {
   padding: 15px 36px;
 }
 
+// import { METHODS } from "http";
+// import { useCssVars } from "vue"
+
+Retornar el nombre de usuario options API:
+export default {
+ame:'HomeView',
+data(){  
+return {
+   title: 'Wellcome',
+       user: '',
+     {
+       nikName: '',
+        email: '',
+  psw: '',
+ },
+    methods: {
+       saludar(user) {
+       alert('Wellcome' + user + )
+     },
+     computed: {
+       fullName() {
+         return this.user.nikName
+       }
+     }}
+   }
+   }}
