@@ -15,11 +15,11 @@
     </div>
     
   </header>
-  
+   
   <RouterView />
   
   <Footer />
-
+  <!-- <button @click="topFunction()" id="btnToTop" title="Go to top">Top</button> -->
 </template>
 
 <script>
@@ -47,7 +47,6 @@ export default {
 </script>
 
 <style scoped>
-
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -78,6 +77,26 @@ nav a {
 
 nav a:first-of-type {
   border: 0;
+}
+
+#btnToTop {
+  display: none; 
+  position: fixed; 
+  bottom: 20px; 
+  right: 30px; 
+  z-index: 99; 
+  border: none; 
+  outline: none; 
+  background-color: rgb(233, 54, 218); 
+  color: white; 
+  cursor: pointer; 
+  padding: 15px; 
+  border-radius: 10px; 
+  font-size: 18px; 
+}
+
+#btnToTop:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
 }
 
 @media (min-width: 1024px) {

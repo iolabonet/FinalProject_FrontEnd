@@ -18,11 +18,11 @@ Scenario: As a user, I want to create an account
 <template>
   <!-- https://codepen.io/rpandrews/pen/XWbjJEg -->
   <div class="login-page">
-    <transition name="fade">
+    <transition>
       <div v-if="!registerActive" class="wallpaper-login"></div>
     </transition>
     <div class="wallpaper-register"></div>
-
+<!-- TO DO: Class=wallpaper, sino se usan, borrar! -->
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
