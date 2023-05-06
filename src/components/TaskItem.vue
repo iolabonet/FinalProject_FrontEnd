@@ -50,49 +50,13 @@
 <template>
   <div class="app-container" id="taskItem">
 
-    <div v:if class="tasks-container">
-      <h4>Task: {{ title }}</h4>
-
-      <div class="task-list">
-        <ul class="list">
-          <li class="list-item" v-for="(task, index) in tasks" v-bind:key="index">
-              <span v-bind:class="[task.status ? 'task-completed' : '', 'cursor']"
-                v-on:click="updateTask(task)"
-              >
-                <i v-bind:class="[task.status ? 'fas fa-check-circle' : 'far fa-circle']"></i>
-              </span>
-          </li>
-        </ul>
-      </div>
-
-      <table class="task-list">
-        <input type="radio" id="redioCheck" value="true" v-model="state" false-value="no" />
-        <label for="picked"></label>
-
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Is completed ?</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <!-- TO DO: orderedTasks = filteredTasks.sort((a, b) -->
-            <td><button @click="editTaskBox(task)" class="edit-btn" title="Edit Task"></button></td>
-            <td><button @click="deleteTaskBox(task)" class="delete-btn" title="Delete Task"></button></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <!-- <tr>
-            <td>Titlefuncion añadir tarea</td>
-           TO DO: Añadir funcion añadir tarea a API por user.Id 
-          </tr> -->
-        </tfoot>
-      </table>
-
-      <div class="deleteTaskBox">
-
+    <div class="tasks-container">
+      <h4>To Do... {{ title }}</h4>
+      <div>
+        <button @click="handleRemoveTask(taskId)" type="button" class="delete-btn">Delete</button>
+          <span></span>
+          
+        <button @click="editTaskBox(TaskItem)" class="edit-btn">Edit</button>
       </div>
     </div>
   </div>
@@ -106,29 +70,26 @@ export default {
   data() {
     return {
       newTitle: '',
+      currentTaskId: null,
       state: false,
     }
   },
   props: {
+    taskId: String,
     title: String,
     isCompleted: Boolean,
   },
-  computed: {
-    ...mapState(usetasksStore, ['tasks']),
-    filteredTasks() {
-      let filteredTasks = this.tasks.filter((task) => {
-        return task.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-      })
-      let orderedTasks = filteredTasks.sort((a, b) => {
-        return b.priority - a.uppriority
-      })
-      return orderedTasks
-    }
-  },
-  methods: {
-    ...mapActions(usetasksStore, ['addNewTasks', 'removeTasks', 'updateTaskTitle']),
-  },
 
+  methods: {
+    ...mapActions(usetasksStore, ['removeTask', 'updateTaskTitle']),
+    
+    async handleRemoveTask(taskId){
+      await this.removeTask(this.taskId)
+        this.taskId.splice(index, 1)
+        console.log(taskId)
+      },
+    },
+  
   created() {
     this.newTitle = this.title;
     this.state = this.isCompleted;

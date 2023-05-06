@@ -7,19 +7,19 @@
     <div>
       <!-- https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_tbody -->
     </div>
-    <div @submit.prevent="addNewTasks">
+    <div>
       <h5>ADD NEW TASK</h5>
-      <input v-model="newTitle" v-on:keyup.enter="addNewTask" type="text" class="form-control" placeholder="Task to do"
+      <input v-model="newTitle" type="text" class="form-control" placeholder="Task to do"
         required />
-      <button @click="addNewTask(tasks), emptyFields = false" type="submit" class="addTask-btn">Add</button>
+      <button @click="handleAddNewTask" type="button" class="addTask-btn">Add</button>
     </div>
-    <div v:if="tasks.lenght === 0">
+    <div v-if="tasks && tasks.lenght === 0">
       <p>Welldone, you haven´t tasks TO DO!</p>
     </div>
 
     <div class="taskList-container">
       <h5> MY LIST...</h5>
-      <TaskItem v-for="task in tasks" :key="task.id" :title="task.title" :isCompleted="task.isCompleted"></TaskItem>
+      <TaskItem v-for="task in tasks" :key="task.id" :taskId="task.id" :title="task.title" :isCompleted="task.isCompleted"></TaskItem>
     </div>
 
     <!-- TO DO: Que se vean todas las tasks como si fueran post-it y al hacer hover encima se haga zoom. -->
@@ -44,8 +44,7 @@ export default {
   },
   data() {
     return {
-      addNewTitle: "",
-      emptyFields: false,
+      newTitle: "",
     }
   },
   computed: {
@@ -57,21 +56,6 @@ export default {
     ...mapActions(useUserStore, ['signOut']),
     ...mapActions(useTasksStore, ['fetchTasks', 'addNewTask', 'removeTask', 'updateTaskTitle']),
 
-    addNewTask() {
-      const tasks = {
-        title: this.taskTitle,
-        isCompleted: true,
-      };
-      this.tasks.push(tasks);
-      this.tasksTitle = '';
-    },
-    removeTasks() {
-      removeTask(index);
-      this.tasks.splice(index, 1);
-    },
-    updateTask(tasks) {
-      tasks.status = !tasks.status;
-    },
     async handleSignOut() {
       await this.signOut()
       this.$router.push({
@@ -81,13 +65,21 @@ export default {
     async created() {
       await this.fetchTasks()
     },
-    async AddNewTask() {
-      if (this.addNewTask === "") {
-        this.emptyFields = true;
-      } else {
-        await this.addNewTask()
-      }
+    async handleAddNewTask() {
+      // if (this.addNewTask === "") {
+      //   this.emptyFields = true;
+      // } else {
+      //   await this.addNewTask()
+      // }
+      await this.addNewTask(
+        this.newTitle, this.user.id
+      )
     },
+    async handleRemoveTask(){
+      await this.removeTask(
+        this.taskId.slice(index, 0)
+      )
+    }
   }}
 
 </script>
