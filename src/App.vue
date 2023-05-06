@@ -1,8 +1,3 @@
-<!-- Step By Step 
-1. Import
-2. Add to Components
-3. Add to template-->
-
 <template>
   <NavBar />
   <header>
@@ -13,13 +8,11 @@
         <RouterLink to="/tasks">Tasks</RouterLink>
       </nav>
     </div>
-    
   </header>
    
   <RouterView />
-  
-  <Footer />
-  <!-- <button @click="topFunction()" id="btnToTop" title="Go to top">Top</button> -->
+    <Footer />
+    <!-- <button @click="topFunction()" id="btnToTop" title="Go to top">Top</button> -->
 </template>
 
 <script>

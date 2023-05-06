@@ -1,3 +1,8 @@
+<!-- Step By Step 
+1. Import
+2. Add to Components
+3. Add to template-->
+
 AGRANDAR TEXTO: 
       https://es.vuejs.org/v2/guide/components.html 
       <button v-on:click="$emit('enlarge-text')"></button>
@@ -155,3 +160,12 @@ function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
+
+
+<div>
+  <input v-model="searchTerm" placeholder="Filter by Title"
+    <ul>
+      <li>v-for="tasks in filteredTasks"</li>
+        <div {{task.title}} by {{task.category}} doing: {{task.updoing}}></div> -->
+    </ul>
+</div>

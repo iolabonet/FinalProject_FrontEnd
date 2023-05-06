@@ -1,3 +1,13 @@
+<!-- Feature: Add a new task
+    Background: As a logged in user, I want to add a new task and have it appear on my to-do list
+    Given I am logged in 
+
+    Scenario: As a logged-in user I want to create a new task
+    When I visit the home screen
+    And I enter "My cool task" in the NewTask field
+    And I click the submit button
+    Then I expect to see "My cool task" in the To-Do list of tasks -->
+
 <!-- Feature: Edit a task
     Background: As a logged in user, I want to edit an existing task and have the app display the updated content
     Given I have already created a task
@@ -40,13 +50,25 @@
 <template>
   <div class="app-container" id="taskItem">
 
-    <div v:if class="form-group">
+    <div v:if class="tasks-container">
       <h4>Task: {{ title }}</h4>
-      
+
+      <div class="task-list">
+        <ul class="list">
+          <li class="list-item" v-for="(task, index) in tasks" v-bind:key="index">
+              <span v-bind:class="[task.status ? 'task-completed' : '', 'cursor']"
+                v-on:click="updateTask(task)"
+              >
+                <i v-bind:class="[task.status ? 'fas fa-check-circle' : 'far fa-circle']"></i>
+              </span>
+          </li>
+        </ul>
+      </div>
+
       <table class="task-list">
-        <input type="radio" id="redioCheck" value="false" v-model="state" false-value="no" />
+        <input type="radio" id="redioCheck" value="true" v-model="state" false-value="no" />
         <label for="picked"></label>
-        
+
         <thead>
           <tr>
             <th>Title</th>
@@ -62,10 +84,10 @@
           </tr>
         </tbody>
         <tfoot>
-          <tr>
+          <!-- <tr>
             <td>Titlefuncion añadir tarea</td>
-            <!-- TO DO: Añadir funcion añadir tarea a API por user.Id -->
-          </tr>
+           TO DO: Añadir funcion añadir tarea a API por user.Id 
+          </tr> -->
         </tfoot>
       </table>
 
@@ -83,8 +105,8 @@ export default {
   name: 'TaskItem',
   data() {
     return {
-    newTitle: '',
-    state: false,
+      newTitle: '',
+      state: false,
     }
   },
   props: {
@@ -106,7 +128,8 @@ export default {
   methods: {
     ...mapActions(usetasksStore, ['addNewTasks', 'removeTasks', 'updateTaskTitle']),
   },
-  created (){
+
+  created() {
     this.newTitle = this.title;
     this.state = this.isCompleted;
   }
@@ -118,7 +141,9 @@ export default {
 @import url('bootstrap/dist/css/bootstrap.min.css');
 
 div {
-  background-image: url(../assets/images/post_it_yellow.png);
+  /* background-image: url(../assets/images/post_it_yellow.png); */
+  width: auto;
+  height: auto;
 }
 
 input {
@@ -150,6 +175,7 @@ input::placeholder {
 
 .deleteButton {
   background-color: red;
+  width: 20px;
 }
 
 

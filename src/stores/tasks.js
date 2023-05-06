@@ -16,17 +16,17 @@ export default defineStore('tasks', {
       const { data, error } = await supabase
         .from('tasks')
         .select()
-        .order('id', { ascending: false });
       this.tasks = data;
     },
     
-    async addNewTask(tasks) {
-      const { error } = await supabase
+    async addNewTask({ title, userId}) {
+      const { data, error } = await supabase
         .from('tasks')
-        .insert({ user_id, title: '' })
+        .insert({ user_id: userId, title })
+        .select()
     },
     
-    async removeTask(tasks) {
+    async removeTask({ title, user_id}) {
       const { error } = await supabase
         .from('tasks')
         .delete()

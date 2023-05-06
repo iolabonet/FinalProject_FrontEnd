@@ -1,4 +1,4 @@
-import NewTask from '@/components/NewTask.vue';
+import TaskItem from '@/components/TaskItem.vue';
 import userStore from '@/stores/user.js';
 import HomeView from '@/views/HomeView.vue';
 import Page404 from '@/views/Page404.vue';
@@ -41,7 +41,7 @@ const router = createRouter({
       children: [{
         path: 'New-task',
         name: 'New-task',
-        component: NewTask,
+        component: TaskItem,
       }, 
       ],
     },
