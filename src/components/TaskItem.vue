@@ -1,13 +1,3 @@
-<!-- Feature: Add a new task
-    Background: As a logged in user, I want to add a new task and have it appear on my to-do list
-    Given I am logged in 
-
-    Scenario: As a logged-in user I want to create a new task
-    When I visit the home screen
-    And I enter "My cool task" in the NewTask field
-    And I click the submit button
-    Then I expect to see "My cool task" in the To-Do list of tasks -->
-
 <!-- Feature: Edit a task
     Background: As a logged in user, I want to edit an existing task and have the app display the updated content
     Given I have already created a task
@@ -38,24 +28,16 @@
     And I click the corresponding done button to the task
     Then I expect to see that my task has immediately been moved to the completed section -->
 
-<!-- Feature: Delete a task
-    Background: As a logged in user, I want to be able to permanently delete an existing task
-    Given I have already created a task
-   
-    Scenario: As a logged-in user I want to delete a task
-    When I locate the task I'd like to delete
-    And I click the corresponding delete button to the task
-    Then I expect to see that my task has been permanently removed from every list -->
-
 <template>
   <div class="app-container" id="taskItem">
 
     <div class="tasks-container">
       <h4>To Do... {{ title }}</h4>
       <div>
-        <button @click="handleRemoveTask(taskId)" type="button" class="delete-btn">Delete</button>
-          <span></span>
-          
+        <button @click="handleRemoveTask" type="button" class="delete-btn">Delete</button>
+        <span></span>
+        <input type="checkbox" v-model="state" @change="handleChangeState" />
+
         <button @click="editTaskBox(TaskItem)" class="edit-btn">Edit</button>
       </div>
     </div>
@@ -64,32 +46,33 @@
 
 <script>
 import usetasksStore from '@/stores/tasks';
-import { mapActions, mapState } from 'pinia';
+import { mapActions } from 'pinia';
 export default {
   name: 'TaskItem',
   data() {
     return {
       newTitle: '',
-      currentTaskId: null,
       state: false,
     }
   },
   props: {
-    taskId: String,
+    taskId: Number,
     title: String,
     isCompleted: Boolean,
   },
 
   methods: {
-    ...mapActions(usetasksStore, ['removeTask', 'updateTaskTitle']),
-    
-    async handleRemoveTask(taskId){
+    ...mapActions(usetasksStore, ['removeTask', 'updateTaskTitle', 'updateTaskState']),
+
+    async handleRemoveTask() {
       await this.removeTask(this.taskId)
-        this.taskId.splice(index, 1)
-        console.log(taskId)
-      },
     },
-  
+    
+    async handleChangeState() {
+      await this.updateTaskState(this.state, this.taskId)
+    },
+  },
+
   created() {
     this.newTitle = this.title;
     this.state = this.isCompleted;
@@ -122,7 +105,9 @@ input::placeholder {
 }
 
 #taskItem {
-  background-color: yellowgreen;
+  background-color: rgb(91, 197, 188);
+  padding-left: 5%;
+  color: black;
 }
 
 .deleteTaskBox {

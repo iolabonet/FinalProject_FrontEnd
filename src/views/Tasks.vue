@@ -9,8 +9,7 @@
     </div>
     <div>
       <h5>ADD NEW TASK</h5>
-      <input v-model="newTitle" type="text" class="form-control" placeholder="Task to do"
-        required />
+      <input v-model="newTitle" type="text" class="form-control" placeholder="Task to do" required />
       <button @click="handleAddNewTask" type="button" class="addTask-btn">Add</button>
     </div>
     <div v-if="tasks && tasks.lenght === 0">
@@ -19,7 +18,8 @@
 
     <div class="taskList-container">
       <h5> MY LIST...</h5>
-      <TaskItem v-for="task in tasks" :key="task.id" :taskId="task.id" :title="task.title" :isCompleted="task.isCompleted"></TaskItem>
+      <TaskItem v-for="task in tasks" :key="task.id" :taskId="task.id" :title="task.title"
+        :isCompleted="task.is_complete"></TaskItem>
     </div>
 
     <!-- TO DO: Que se vean todas las tasks como si fueran post-it y al hacer hover encima se haga zoom. -->
@@ -62,9 +62,6 @@ export default {
         name: 'sign-in'
       })
     },
-    async created() {
-      await this.fetchTasks()
-    },
     async handleAddNewTask() {
       // if (this.addNewTask === "") {
       //   this.emptyFields = true;
@@ -75,12 +72,16 @@ export default {
         this.newTitle, this.user.id
       )
     },
-    async handleRemoveTask(){
+    async handleRemoveTask() {
       await this.removeTask(
         this.taskId.slice(index, 0)
       )
     }
-  }}
+  },
+  async created() {
+    await this.fetchTasks()
+  },
+}
 
 </script>
 
@@ -126,7 +127,7 @@ input {
   width: 4rem;
   height: 2rem;
   font-weight: 400;
-  background-color: aquamarine;
+  background-color: rgb(125, 241, 71);
   cursor: pointer;
 }
 
@@ -140,14 +141,15 @@ img {
 }
 
 .taskList-container {
-  width: 80%;
+  margin-top: 10%;
+  width: 100%;
   background-color: black;
 }
 
 .tasks-container {
   width: auto;
-
 }
+
 
 /*MOBILE*/
 @media (max-width: 767px) {}
@@ -157,5 +159,4 @@ img {
 
 /*MOBILE Y TABLET*/
 @media (max-width: 1023px) {}
-
 </style>

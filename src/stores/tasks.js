@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia';
 import supabase from '../supabase/index';
-import useUserStore from './user';
 
 export default defineStore('tasks', {
   state: () => ({
@@ -19,7 +18,7 @@ export default defineStore('tasks', {
       this.tasks = data;
     },
 
-    async addNewTask( title, userId ) {
+    async addNewTask(title, userId) {
       const { data, error } = await supabase
         .from('tasks')
         .insert({ user_id: userId, title })
@@ -33,9 +32,13 @@ export default defineStore('tasks', {
         .from('tasks')
         .delete()
         .eq('id', taskId)
-        if (error) throw error
-      // this.task.filter.taskId && this.task.taskId.splice(index,1) 
-      // buscar en la lista de tasks la que acabo de eliminar y cuando la encuentre, sacarla del array
+      if (error) throw error
+      const index = this.tasks.findIndex((task) => {
+        return task.id === taskId
+      })
+      if (index > -1) {
+        this.tasks.splice(index, 1)
+      }
     },
 
     async updateTaskTitle(newTitle, taskId) {
@@ -44,19 +47,29 @@ export default defineStore('tasks', {
         .update({ title: newTitle })
         .eq('id', taskId)
         .select()
-        if (error) throw error
+      if (error) throw error
       // this.task.filter .title = newTitle buscar en la lista de tasks la que tarea que acabo de actualizr  y cambiarle el titulo
-
+      const index = this.tasks.findIndex((task) => {
+        return task.id === taskId
+      })
+      if (index > -1) {
+        this.tasks[index].title = newTitle
+      }
     },
     async updateTaskState(newState, taskId) {
       const { data, error } = await supabase
         .from('tasks')
-        .update({ is_completed: newState })
+        .update({ is_complete: newState })
         .eq('id', taskId)
         .select()
-        if (error) throw error
+      if (error) throw error
       // this.task.filter .taskId = newState buscar en la lista de tasks la que tarea que acabo de actualizr  y cambiarle el estado
-
+      const index = this.tasks.findIndex((task) => {
+        return task.id === taskId
+      })
+      if (index > -1) {
+        this.tasks[index].is_complete = newState
+      }
     }
   }
 });
