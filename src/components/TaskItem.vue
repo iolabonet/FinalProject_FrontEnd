@@ -13,7 +13,7 @@
   <div class="app-container" id="taskItem">
     <div class="tasks-container">
       <h4>{{ title }}</h4>
-      <input v-model="newTitle" type="text">
+      <input v-model="newTitle" type="text" class="form-control">
       <button @click="handleUpdateTaskTitle()" class="edit-btn">Edit</button>
       <div>
         <button @click="handleRemoveTask" type="button" class="delete-btn">Delete</button>
@@ -126,5 +126,7 @@ img {
 @media (min-width: 768px) and (max-width: 1023px) {}
 
 /*MOBILE Y TABLET*/
-@media (max-width: 1023px) {}
+@media (max-width: 1023px) {
+
+}
 </style>

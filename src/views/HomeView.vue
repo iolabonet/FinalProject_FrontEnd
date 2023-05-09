@@ -10,6 +10,7 @@ Scenario: As a user, I want to log out
 
 <template>
   <div class="homePage">
+    <img src="../assets/images/post_it_Blue.png" alt="">
     <h1>An important tool to your Daily</h1>
     <div>
       <ul>
@@ -37,7 +38,10 @@ Scenario: As a user, I want to log out
 .homePage {
   width: 100%;
   height: 80vh;
-  background-image: url(../assets/images/post_it_Blue.png);
-
 }
+img{
+  width: 100%;
+  z-index: -1;
+}
+
 </style>

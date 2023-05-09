@@ -161,6 +161,8 @@ img {
   width: auto;
 }
 .box-completed{
+  display: flex;
+  flex-wrap: wrap;
   background-color: green;
 }
 
