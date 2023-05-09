@@ -1,14 +1,4 @@
-<!-- Feature: Edit a task
-    Background: As a logged in user, I want to edit an existing task and have the app display the updated content
-    Given I have already created a task
- 
-    Scenario: As a user, I want to edit the title of my task
-    When I locate the task I'd like to edit
-    And I click the corresponding Edit button to the task
-    Then I expect the title of the task to become editable
-    When I enter a new description for the task
-    And I click submit
-    Then I expect to see my updated task on the To-Do list -->
+<!-- Feature: TO DO Basic CRUD: Ok -->
 
 <!-- Feature: Mark a task as incomplete
     Background: As a logged in user, I want to be able to mark a task as incomplete and automatically move it back to the to-do section 
@@ -19,26 +9,18 @@
     And I click the corresponding incomplete button to the task
     Then I expect to see that my task has immediately been moved to the to-do section -->
 
-<!-- Feature: Mark a task as complete
-    Background: As a logged in user, I want to be able to mark a task as complete and automatically move it to the completed section 
-    Given I have already created a task
- 
-    Scenario: As a logged-in user I want to mark a task as complete
-    When I locate the task I'd like to mark as complete
-    And I click the corresponding done button to the task
-    Then I expect to see that my task has immediately been moved to the completed section -->
-
 <template>
   <div class="app-container" id="taskItem">
-
     <div class="tasks-container">
-      <h4>To Do... {{ title }}</h4>
+      <h4>{{ title }}</h4>
+      <input v-model="newTitle" type="text">
+      <button @click="handleUpdateTaskTitle()" class="edit-btn">Edit</button>
       <div>
         <button @click="handleRemoveTask" type="button" class="delete-btn">Delete</button>
-        <span></span>
-        <input type="checkbox" v-model="state" @change="handleChangeState" />
-
-        <button @click="editTaskBox(TaskItem)" class="edit-btn">Edit</button>
+        <label class="isComplet">
+          <img src="../assets/images/dead_line.jpg" alt=" Is completed?">
+        </label>
+        <input class="deadLine" type="checkbox" v-model="state" @change="handleChangeState" />
       </div>
     </div>
   </div>
@@ -67,9 +49,13 @@ export default {
     async handleRemoveTask() {
       await this.removeTask(this.taskId)
     },
-    
+
     async handleChangeState() {
       await this.updateTaskState(this.state, this.taskId)
+    },
+
+    async handleUpdateTaskTitle() {
+      await this.updateTaskTitle(this.newTitle, this.taskId)
     },
   },
 
@@ -85,7 +71,6 @@ export default {
 @import url('bootstrap/dist/css/bootstrap.min.css');
 
 div {
-  /* background-image: url(../assets/images/post_it_yellow.png); */
   width: auto;
   height: auto;
 }
@@ -100,8 +85,9 @@ input::placeholder {
   color: blue;
 }
 
-.app-container {
-  background-color: brown;
+.deadLine {
+  width: 2vh;
+  height: 2vh;
 }
 
 #taskItem {
@@ -116,14 +102,22 @@ input::placeholder {
 
 .addTask-btn {
   background-color: green;
-  /* TO DO: añadir una imagen sumar */
 }
 
-.deleteButton {
+.delete-btn {
   background-color: red;
-  width: 20px;
+  width: 100px;
 }
 
+.edit-btn {
+  background-color: blue;
+  width: 60px;
+  border-radius: 20px solid black;
+}
+
+img {
+  width: 6vh;
+}
 
 /*MOBILE*/
 @media (max-width: 767px) {}

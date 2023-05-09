@@ -15,7 +15,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
-      meta: { 
+      meta: {
         requireAuth: true,
       }
     },
@@ -42,7 +42,7 @@ const router = createRouter({
         path: 'New-task',
         name: 'New-task',
         component: TaskItem,
-      }, 
+      },
       ],
     },
     {

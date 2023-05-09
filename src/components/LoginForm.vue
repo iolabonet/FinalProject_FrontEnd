@@ -1,19 +1,6 @@
-<!-- Feature: Create an account  
-  
-Scenario: As a user, I want to create an account
-  
-  Then I expect to be shown a warning that instructs me to confirm my email address by clicking a link in an email
-  And I click the link provided in the email
-  Then I expect to be logged in to the app 
-  And I expect to see the home screen -->
-
-<!-- Scenario: As a user, I want to log in to the app
-  When I visit the login page
-  And I enter my email as "test@example.co.uk"
-  And I enter my password as "****"
-  And I click the Log In button
-  Then I expect to be logged in to the app 
-  And I expect to see the home screen  -->
+<!-- Feature: TO DO: Create an account: OK -->
+<!-- Feature: TO DO: Log in to the app: OK! -->
+<!-- Feature: TO DO: Log Out: OK! -->
 
 <template>
   <!-- https://codepen.io/rpandrews/pen/XWbjJEg -->
@@ -22,7 +9,6 @@ Scenario: As a user, I want to create an account
       <div v-if="!registerActive" class="wallpaper-login"></div>
     </transition>
     <div class="wallpaper-register"></div>
-<!-- TO DO: Class=wallpaper, sino se usan, borrar! -->
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
@@ -32,10 +18,8 @@ Scenario: As a user, I want to create an account
               <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
               <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
               <button type="button" class="btn btn-primary" @click="doLogin">Log In</button>
-              <p>Don't have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign
-                  up here</a>
-              </p>
-              <!-- <p><a href="#">Forgot your password?</a></p> -->
+              <p>Don't have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign up
+                  here</a></p>
             </form>
           </div>
 
@@ -55,10 +39,6 @@ Scenario: As a user, I want to create an account
       </div>
     </div>
   </div>
-
-  <!-- <button class="btnForm" @click="userId = !userId">User</button>
-              <h1 v-if="awesome">User exists!</h1>
-              <h1 v-else>Oh no 😢</h1> -->
 </template>
 
 <script>

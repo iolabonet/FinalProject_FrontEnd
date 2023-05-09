@@ -1,9 +1,5 @@
 <template>
   <LoginForm /> 
-  <!-- <main>
-    <RouterView />
-  </main>
-   -->
 </template>
   
 <script>

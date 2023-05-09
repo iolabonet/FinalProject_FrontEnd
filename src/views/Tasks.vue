@@ -12,14 +12,24 @@
       <input v-model="newTitle" type="text" class="form-control" placeholder="Task to do" required />
       <button @click="handleAddNewTask" type="button" class="addTask-btn">Add</button>
     </div>
-    <div v-if="tasks && tasks.lenght === 0">
+    <div v-if="tasks.lenght === 0">
       <p>Welldone, you haven´t tasks TO DO!</p>
     </div>
 
     <div class="taskList-container">
-      <h5> MY LIST...</h5>
+      <h5>To Do...</h5>
       <TaskItem v-for="task in tasks" :key="task.id" :taskId="task.id" :title="task.title"
         :isCompleted="task.is_complete"></TaskItem>
+    </div>
+    <div class="box-completed">
+      <h5>Complete:</h5>
+      <ul>
+        <li v-for="task in tasks" :key="task.id">
+          <div v-if="task.is_complete">
+            {{ task.title }} 
+          </div>
+        </li>
+      </ul>
     </div>
 
     <!-- TO DO: Que se vean todas las tasks como si fueran post-it y al hacer hover encima se haga zoom. -->
@@ -36,6 +46,7 @@ import TaskItem from '@/components/TaskItem.vue';
 import useTasksStore from '@/stores/tasks';
 import useUserStore from '@/stores/user';
 import { mapActions, mapState } from 'pinia';
+import tasks from '../stores/tasks';
 
 export default {
   name: 'Tasks',
@@ -148,6 +159,9 @@ img {
 
 .tasks-container {
   width: auto;
+}
+.box-completed{
+  background-color: green;
 }
 
 

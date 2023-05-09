@@ -42,6 +42,7 @@ export default defineStore('tasks', {
     },
 
     async updateTaskTitle(newTitle, taskId) {
+      console.log(newTitle, taskId)
       const { data, error } = await supabase
         .from('tasks')
         .update({ title: newTitle })

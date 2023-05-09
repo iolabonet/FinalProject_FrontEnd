@@ -1,6 +1,5 @@
 <template>
   <div class="navBar">
-
     <b-navbar toggleable="lg" type="dark" variant="info">
       <img src="../assets/images/logo1.png" alt="inatg">
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -32,9 +31,10 @@ export default {
   /* shape-divider:
   https://elementor.com/help/shape-divider/ */
 }
+
 img {
   width: 4vh;
-  
+
 }
 
 
