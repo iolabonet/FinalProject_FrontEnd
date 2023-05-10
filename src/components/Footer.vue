@@ -14,14 +14,16 @@ export default {
 <style scoped>
 @import url('bootstrap/dist/css/bootstrap.min.css');
 
-footer{
+.myFooter{
   display: flex;
   justify-content: center;
   color: #53a8b6;
 }
 
 /*MOBILE*/
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+  
+}
 
 /*TABLET*/
 @media (min-width: 768px) and (max-width: 1023px) {}

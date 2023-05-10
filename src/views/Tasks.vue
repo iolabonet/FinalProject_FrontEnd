@@ -143,12 +143,15 @@ input {
 }
 
 img {
-  max-width: 200px;
+  max-width: 600px;
+  width: 100%;
+  z-index: -1;
 }
 
-.gifUps {
-  width: 20rem;
-  height: 20rem;
+.gif {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .taskList-container {
@@ -168,11 +171,23 @@ img {
 
 
 /*MOBILE*/
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+  img {
+  width: 100%;
+  z-index: -1;
+}
+}
 
 /*TABLET*/
-@media (min-width: 768px) and (max-width: 1023px) {}
+@media (min-width: 768px) and (max-width: 1023px) {
+  img {
+  width: 100%;
+  z-index: -1;
+}
+}
 
 /*MOBILE Y TABLET*/
-@media (max-width: 1023px) {}
+@media (max-width: 1023px) {
+  
+}
 </style>

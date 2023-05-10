@@ -12,7 +12,7 @@
    
   <RouterView />
     <Footer />
-    <!-- <button @click="topFunction()" id="btnToTop" title="Go to top">Top</button> -->
+    <button @click="topFunction()" id="btnToTop" title="Go to top">Top</button>
 </template>
 
 <script>

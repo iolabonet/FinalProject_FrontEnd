@@ -2,14 +2,10 @@
   <div class="navBar">
     <b-navbar toggleable="lg" type="dark" variant="info">
       <img src="../assets/images/logo1.png" alt="inatg">
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav>
-          <b-nav-item href="#">To do app</b-nav-item>
-        </b-navbar-nav>
-      </b-collapse>
+      <b-navbar-nav>
+        <b-nav-item href="#">To do app</b-nav-item>
+      </b-navbar-nav>
     </b-navbar>
-
   </div>
 </template>
 
@@ -26,17 +22,22 @@ export default {
 .navBar {
   background-color: rgb(51, 197, 197);
   width: auto;
-  height: 6vh;
-  position: sticky;
-  /* shape-divider:
-  https://elementor.com/help/shape-divider/ */
+  height: 8vh;
 }
 
 img {
-  width: 4vh;
+  margin: 1vh;
+  position: relative;
+  width: 5vh;
 
 }
 
+b-navbar-nav {
+  margin-left: 2vh;
+  position: relative;
+  font-size: x-large;
+  font-weight: bold;
+}
 
 /*MOBILE*/
 @media (max-width: 767px) {}
