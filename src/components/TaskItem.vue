@@ -12,6 +12,7 @@
 <template>
   <div class="app-container" id="taskItem">
     <div class="tasks-container">
+      <img src="../assets/images/—Pngtree—vector push pin paper_8586153.png" alt="">
       <h4>{{ title }}</h4>
       <input v-model="newTitle" type="text" class="form-control">
       <button @click="handleUpdateTaskTitle()" class="edit-btn">Edit</button>
@@ -20,7 +21,7 @@
         <label class="isComplet">
           <img src="../assets/images/dead_line.jpg" alt=" Is completed?">
         </label>
-        <input class="deadLine" type="checkbox" v-model="state" @change="handleChangeState" />
+        <input class="deadLine" type="checkbox" v-model="state" @change="handleChangeState"/>  
       </div>
     </div>
   </div>
@@ -113,10 +114,19 @@ input::placeholder {
   background-color: blue;
   width: 60px;
   border-radius: 20px solid black;
+
 }
 
+.tasks-container {
+  width: auto;
+  color:black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
 img {
-  width: 6vh;
+  width: 4vh;
 }
 
 /*MOBILE*/

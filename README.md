@@ -26,6 +26,8 @@ https://supabase.com/
 
 https://cucumber.io/docs/gherkin/reference/#keywords
 
+https://fontawesome.com/
+
 https://www.electronjs.org/docs/latest/tutorial/devtools-extension
 https://www.any.do/
 

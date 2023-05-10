@@ -1,15 +1,16 @@
 <template>
   <section v-if="user">
     <b-sidebar class="loginOut">
-      <button id="btn-logOut" @click="handleSignOut">Logout</button>
+      <button id="btn-logOut" @click="handleSignOut">Sign Out</button>
+      <!-- <font-awesome-icon :icon="['fas', 'right-from-bracket']" /> -->
     </b-sidebar>
 
     <div>
       <!-- https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_tbody -->
     </div>
     <div>
-      <h5>ADD NEW TASK</h5>
-      <input v-model="newTitle" type="text" class="form-control" placeholder="Task to do" required />
+      <!--ADD NEW TASK !-->
+      <input v-model="newTitle" type="text" class="form-control" placeholder="To do..." required />
       <button @click="handleAddNewTask" type="button" class="addTask-btn">Add</button>
     </div>
     <div v-if="tasks.lenght === 0">
@@ -22,22 +23,23 @@
         :isCompleted="task.is_complete"></TaskItem>
     </div>
     <div class="box-completed">
+      <img src="../assets/images/post_it_yellow.png" alt="">
       <h5>Complete:</h5>
       <ul>
         <li v-for="task in tasks" :key="task.id">
           <div v-if="task.is_complete">
-            {{ task.title }} 
+            {{ task.title }}
           </div>
         </li>
       </ul>
     </div>
-
     <!-- TO DO: Que se vean todas las tasks como si fueran post-it y al hacer hover encima se haga zoom. -->
   </section>
 
   <section class="gif" v-else>
     <img src="../assets/images/1f92d_gif_ups.gif" alt="">
-    <p>You have to login first...</p>
+    <br>
+    <p>Ups... You forgot to Sign In!</p>
   </section>
 </template>
 
@@ -123,11 +125,39 @@ h4 {
 }
 
 #btn-logOut {
-  width: 6rem;
+  width: 8rem;
   height: 4rem;
   font-weight: 800;
-  background-color: aquamarine;
+  background-color: rgb(46, 129, 238);
+  border-radius: 30px;
   cursor: pointer;
+  transition: 0.5s;
+  overflow: hidden;
+}
+
+#btn-logOut::before {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all;
+}
+
+#btn-logOut:hover::before {
+  top: -30px;
+}
+
+#btn-logOut::after {
+  position: relative;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: all .5s ease-in-out;
+}
+
+#btn-logOut:hover:after {
+  content: url(../assets/images/puerta\ -\ copia.jpg);
+  font-size: 10px;
+  top: -20%;
 }
 
 input {
@@ -138,14 +168,8 @@ input {
   width: 4rem;
   height: 2rem;
   font-weight: 400;
-  background-color: rgb(125, 241, 71);
+  background-color: rgb(81, 250, 3);
   cursor: pointer;
-}
-
-img {
-  max-width: 600px;
-  width: 100%;
-  z-index: -1;
 }
 
 .gif {
@@ -157,37 +181,40 @@ img {
 .taskList-container {
   margin-top: 10%;
   width: 100%;
-  background-color: black;
+  background-color: rgb(235, 151, 27);
 }
 
-.tasks-container {
-  width: auto;
+img {
+  max-width: 600px;
+  width: 100%;
+  z-index: -1;
+  background-repeat: no-repeat;
 }
-.box-completed{
+
+.box-completed {
+  color: rgb(241, 235, 235);
   display: flex;
   flex-wrap: wrap;
-  background-color: green;
 }
+
 
 
 /*MOBILE*/
 @media (max-width: 767px) {
   img {
-  width: 100%;
-  z-index: -1;
-}
+    width: 100%;
+    z-index: -1;
+  }
 }
 
 /*TABLET*/
 @media (min-width: 768px) and (max-width: 1023px) {
   img {
-  width: 100%;
-  z-index: -1;
-}
+    width: 100%;
+    z-index: -1;
+  }
 }
 
 /*MOBILE Y TABLET*/
-@media (max-width: 1023px) {
-  
-}
+@media (max-width: 1023px) {}
 </style>

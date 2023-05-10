@@ -18,8 +18,8 @@
               <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
               <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
               <button type="button" class="btn btn-primary" @click="doLogin">Log In</button>
-              <p>Don't have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign up
-                  here</a></p>
+              <p>Don't have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">
+                  Sign up here</a></p>
             </form>
           </div>
 
@@ -54,7 +54,7 @@ export default {
       passwordReg: "",
       confirmReg: "",
       emptyFields: false,
-      // errorMessage: ''
+      errorMessage: '',
     }
   },
   props: {
@@ -75,17 +75,17 @@ export default {
         })
       }
     },
-    // click(event) {
-    //   event.preventDefault()
-    //   console.log(event)
-    // },
-    // validateEmail(email) {
-    //   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-    //     this.errorMessage = ''
-    //   } else {
-    //     this.errorMessage = 'Invalid Email';
-    //   }
-    // },
+    click(event) {
+      event.preventDefault()
+      console.log(event)
+    },
+    validateEmail(email) {
+      if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        this.errorMessage = ''
+      } else {
+        this.errorMessage = 'Invalid Email';
+      }
+    },
     async doRegister() {
       if (this.emailReg === "" || this.passwordReg === "" || this.confirmReg === "") {
         this.emptyFields = true;
@@ -146,22 +146,13 @@ div.card.register {
   cursor: url(../assets/images/myHand.png);
 }
 
-/* .warning {
-  border: 2px solid #f39389;
-  border-radius: 2px;
-  padding: 10px;
-  position: absolute;
-  background-color: #fbd8d4;
-  color: #3b3c40;
-} */
-
 h1 {
   margin-bottom: 1.5rem;
 }
 
 .error {
   animation-name: errorShake;
-  animation-duration: 0.3s;
+  animation-duration: 0.4s;
 }
 
 @keyframes errorShake {
@@ -186,10 +177,13 @@ h1 {
   }
 }
 
-@import url('bootstrap/dist/css/bootstrap.min.css');
-
 /*MOBILE*/
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+
+  .card {
+    width: auto;
+  }
+}
 
 /*TABLET*/
 @media (min-width: 768px) and (max-width: 1023px) {}

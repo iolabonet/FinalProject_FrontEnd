@@ -112,33 +112,6 @@ input {
   padding: 15px 36px;
 }
 
-// import { METHODS } from "http";
-// import { useCssVars } from "vue"
-
-Retornar el nombre de usuario options API:
-export default {
-ame:'HomeView',
-data(){  
-return {
-   title: 'Wellcome',
-       user: '',
-     {
-       nikName: '',
-        email: '',
-  psw: '',
- },
-    methods: {
-       saludar(user) {
-       alert('Wellcome' + user + )
-     },
-     computed: {
-       fullName() {
-         return this.user.nikName
-       }
-     }}
-   }
-   }}
-
    // Button scroll to top
 // https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 // Get the button:
@@ -166,6 +139,6 @@ function topFunction() {
   <input v-model="searchTerm" placeholder="Filter by Title"
     <ul>
       <li>v-for="tasks in filteredTasks"</li>
-        <div {{task.title}} by {{task.category}} doing: {{task.updoing}}></div> -->
+        <div {{task.title}}></div>
     </ul>
 </div>
