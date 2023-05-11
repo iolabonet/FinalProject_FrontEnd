@@ -3,9 +3,9 @@ import userStore from '@/stores/user.js'
 import HomeView from '@/views/HomeView.vue'
 import Page404 from '@/views/Page404.vue'
 import Tasks from '@/views/Tasks.vue'
-import AuthView from '@/views/auth/AuthView.vue'
-import SignIn from '@/views/auth/SignIn.vue'
-import SignUp from '@/views/auth/SignUp.vue'
+import AuthView from '@/views/auths/AuthView.vue'
+import SignIn from '@/views/auths/SignIn.vue'
+import SignUp from '@/views/auths/SignUp.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
