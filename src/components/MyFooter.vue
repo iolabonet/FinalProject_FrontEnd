@@ -8,7 +8,6 @@
 export default {
   name: 'MyFooter'
 }
-
 </script>
 
 <style scoped>

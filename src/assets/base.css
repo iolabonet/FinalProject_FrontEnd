@@ -10,9 +10,9 @@
 }
 
 body {
-background-color: black;
-font-family: 'roboto';
-color: azure;
+  background-color: black;
+  font-family: 'roboto';
+  color: azure;
   /* min-height: 100vh;
   color: var(--color-text);
   background: var(--color-background);

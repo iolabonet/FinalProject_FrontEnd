@@ -1,7 +1,7 @@
 <template>
   <div class="navBar">
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <img src="../assets/images/logo1.png" alt="inatg">
+      <img src="../assets/images/logo1.png" alt="inatg" />
       <b-navbar-nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/auth/sign-in">Sign In</RouterLink>
@@ -30,7 +30,6 @@ img {
   margin: 1vh;
   position: relative;
   width: 5vh;
-
 }
 
 b-navbar-nav {

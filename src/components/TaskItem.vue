@@ -7,7 +7,7 @@
       <input class="deadLine" type="checkbox" v-model="state" @change="handleChangeState" />
     </div>
     <div class="tasks-container">
-      <input v-model="newTitle" type="text" class="form-control" id="editTask">
+      <input v-model="newTitle" type="text" class="form-control" id="editTask" />
       <button @click="handleUpdateTaskTitle()" class="edit-btn">Edit</button>
       <div>
         <button @click="handleRemoveTask" type="button" class="delete-btn">Delete</button>
@@ -17,20 +17,20 @@
 </template>
 
 <script>
-import usetasksStore from '@/stores/tasks';
-import { mapActions } from 'pinia';
+import usetasksStore from '@/stores/tasks'
+import { mapActions } from 'pinia'
 export default {
   name: 'TaskItem',
   data() {
     return {
       newTitle: '',
-      state: false,
+      state: false
     }
   },
   props: {
     taskId: Number,
     title: String,
-    isCompleted: Boolean,
+    isCompleted: Boolean
   },
 
   methods: {
@@ -46,15 +46,14 @@ export default {
 
     async handleUpdateTaskTitle() {
       await this.updateTaskTitle(this.newTitle, this.taskId)
-    },
+    }
   },
 
   created() {
-    this.newTitle = this.title;
-    this.state = this.isCompleted;
+    this.newTitle = this.title
+    this.state = this.isCompleted
   }
 }
-
 </script>
 
 <style scoped>

@@ -1,9 +1,6 @@
-
-
 <template>
   <div class="login">
-    <h1>Hello _____ ^^!
-    </h1>
+    <h1>Hello _____ ^^!</h1>
     <!-- <input type="handleSignIn" />
     <button type="success" @click="handleSignIn">Sign In</button>
     <RouterLink to="/auth/sign-up">Sign Up</RouterLink> -->
@@ -13,13 +10,13 @@
 </template>
 
 <script>
-import { RouterLink } from 'vue-router';
+import { RouterLink } from 'vue-router'
 // import Page404 from '../Page404.vue';
 export default {
   name: 'SignIn',
   components: {
-    RouterLink,
-  },
+    RouterLink
+  }
 }
 </script>
 

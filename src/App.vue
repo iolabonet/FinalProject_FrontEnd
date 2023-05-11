@@ -1,30 +1,29 @@
 <template>
   <NavBar />
-  
+
   <header>
-    <div class="wrapper">
-    </div>
+    <div class="wrapper"></div>
   </header>
 
   <RouterView />
-  
+
   <MyFooter />
 </template>
 
 <script>
-import MyFooter from '@/components/MyFooter.vue';
-import NavBar from '@/components/NavBar.vue';
-import UserStore from '@/stores/user.js';
-import { mapActions } from 'pinia';
-import { RouterLink, RouterView } from 'vue-router';
+import MyFooter from '@/components/MyFooter.vue'
+import NavBar from '@/components/NavBar.vue'
+import UserStore from '@/stores/user.js'
+import { mapActions } from 'pinia'
+import { RouterLink, RouterView } from 'vue-router'
 
 export default {
-  name: "App",
+  name: 'App',
   components: {
     RouterLink,
     RouterView,
     NavBar,
-    MyFooter,
+    MyFooter
   },
   methods: {
     ...mapActions(UserStore, ['fetchUser'])
@@ -107,4 +106,3 @@ nav a:first-of-type {
   }
 }
 </style>
-

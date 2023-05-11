@@ -11,27 +11,63 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
-
           <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
             <h1>Log In</h1>
             <form class="form-group">
-              <input v-model="emailLogin" type="email" class="form-control" placeholder="Email" required>
-              <input v-model="passwordLogin" type="password" class="form-control" placeholder="Password" required>
+              <input
+                v-model="emailLogin"
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                required
+              />
+              <input
+                v-model="passwordLogin"
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                required
+              />
               <button type="button" class="btn btn-primary" @click="doLogin">Log In</button>
-              <p>Don't have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">
-                  Sign up here</a></p>
+              <p>
+                Don't have an account?
+                <a href="#" @click=";(registerActive = !registerActive), (emptyFields = false)">
+                  Sign up here</a
+                >
+              </p>
             </form>
           </div>
 
           <div v-else class="card register" v-bind:class="{ error: emptyFields }">
             <h1>New user</h1>
             <form class="form-group">
-              <input v-model="emailReg" type="email" class="form-control" placeholder="Email" required>
-              <input v-model="passwordReg" type="password" class="form-control" placeholder="Password" required>
-              <input v-model="confirmReg" type="password" class="form-control" placeholder="Confirm Password" required>
+              <input
+                v-model="emailReg"
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                required
+              />
+              <input
+                v-model="passwordReg"
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                required
+              />
+              <input
+                v-model="confirmReg"
+                type="password"
+                class="form-control"
+                placeholder="Confirm Password"
+                required
+              />
               <button type="button" class="btn btn-primary" @click="doRegister">Register</button>
-              <p>Already have an account? <a href="#" @click="registerActive = !registerActive, emptyFields = false">Sign
-                  in here</a>
+              <p>
+                Already have an account?
+                <a href="#" @click=";(registerActive = !registerActive), (emptyFields = false)"
+                  >Sign in here</a
+                >
               </p>
             </form>
           </div>
@@ -42,32 +78,32 @@
 </template>
 
 <script>
-import useUserStore from '@/stores/user';
-import { mapActions } from 'pinia';
+import useUserStore from '@/stores/user'
+import { mapActions } from 'pinia'
 export default {
   name: 'LoginForm',
   data() {
     return {
-      emailLogin: "",
-      passwordLogin: "",
-      emailReg: "",
-      passwordReg: "",
-      confirmReg: "",
+      emailLogin: '',
+      passwordLogin: '',
+      emailReg: '',
+      passwordReg: '',
+      confirmReg: '',
       emptyFields: false,
-      errorMessage: '',
+      errorMessage: ''
     }
   },
   props: {
     registerActive: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   methods: {
     ...mapActions(useUserStore, ['signIn', 'signUp']),
     async doLogin() {
-      if (this.emailLogin === "" || this.passwordLogin === "") {
-        this.emptyFields = true;
+      if (this.emailLogin === '' || this.passwordLogin === '') {
+        this.emptyFields = true
       } else {
         await this.signIn(this.emailLogin, this.passwordLogin)
         this.$router.push({
@@ -83,23 +119,21 @@ export default {
       if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
         this.errorMessage = ''
       } else {
-        this.errorMessage = 'Invalid Email';
+        this.errorMessage = 'Invalid Email'
       }
     },
     async doRegister() {
-      if (this.emailReg === "" || this.passwordReg === "" || this.confirmReg === "") {
-        this.emptyFields = true;
+      if (this.emailReg === '' || this.passwordReg === '' || this.confirmReg === '') {
+        this.emptyFields = true
       } else {
         await this.signUp(this.emailReg, this.passwordReg)
         this.$router.push({
           name: 'tasks'
         })
       }
-    },
-  },
-
+    }
+  }
 }
-
 </script>
 
 <style scoped>
@@ -116,19 +150,18 @@ p {
 }
 
 div.card.register {
-  gap: 2vh
+  gap: 2vh;
 }
 
 .form-group {
   height: 70%;
-
 }
 
 .btn-primary {
   margin-top: 25px;
   border: 0px;
-  background-color: #072AC8;
-  color: #FFFFFF;
+  background-color: #072ac8;
+  color: #ffffff;
   text-decoration: none;
   font-size: 17px;
   font-weight: 500px;
@@ -179,15 +212,16 @@ h1 {
 
 /*MOBILE*/
 @media (max-width: 767px) {
-
   .card {
     width: auto;
   }
 }
 
 /*TABLET*/
-@media (min-width: 768px) and (max-width: 1023px) {}
+@media (min-width: 768px) and (max-width: 1023px) {
+}
 
 /*MOBILE Y TABLET*/
-@media (max-width: 1023px) {}
+@media (max-width: 1023px) {
+}
 </style>

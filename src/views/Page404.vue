@@ -1,42 +1,41 @@
 <template>
-     <div @click="goToHomePage">
-    <img src="../assets/images/Page_404.png" alt="Page Error 404">
-    </div>
-<footer>
-  <p>made by iola ♡</p>  
-</footer>
+  <div @click="goToHomePage">
+    <img src="../assets/images/Page_404.png" alt="Page Error 404" />
+  </div>
+  <footer>
+    <p>made by iola ♡</p>
+  </footer>
 </template>
 
 <script>
 export default {
-  name: "App",
+  name: 'App',
   methods: {
-    goToHomePage(){
-      this.$router.push("/");
+    goToHomePage() {
+      this.$router.push('/')
     }
   }
 }
 </script>
 
 <style scoped>
-div{
+div {
   display: flex;
   justify-content: center;
   width: fit-content;
   height: fit-content;
   cursor: pointer;
 }
-img{
+img {
   width: 75%;
   height: 75%;
   border-radius: 20px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
-footer{
+footer {
   display: flex;
   justify-content: center;
   color: #53a8b6;
 }
-
 </style>

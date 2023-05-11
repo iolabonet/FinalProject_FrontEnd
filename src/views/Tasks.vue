@@ -14,12 +14,17 @@
     </div>
 
     <div class="taskList-container">
-      <TaskItem v-for="task in tasks" :key="task.id" :taskId="task.id" :title="task.title"
-        :isCompleted="task.is_complete"></TaskItem>
+      <TaskItem
+        v-for="task in tasks"
+        :key="task.id"
+        :taskId="task.id"
+        :title="task.title"
+        :isCompleted="task.is_complete"
+      ></TaskItem>
     </div>
     <!--LIST TASKS COMPLETED !-->
     <div class="box-completed-container">
-      <img src="../assets/images/post_it_Blue_2.png" alt="">
+      <img src="../assets/images/post_it_Blue_2.png" alt="" />
       <div class="box-completed-post">
         <h3>Task Completed:</h3>
         <div v-for="task in tasks" :key="task.id">
@@ -32,27 +37,27 @@
   </section>
 
   <section class="gif" v-else>
-    <img src="../assets/images/1f92d_gif_ups.gif" alt="">
-    <br>
+    <img src="../assets/images/1f92d_gif_ups.gif" alt="" />
+    <br />
     <p>Ups... You forgot to Sign In!</p>
   </section>
 </template>
 
 <script>
-import TaskItem from '@/components/TaskItem.vue';
-import useTasksStore from '@/stores/tasks';
-import useUserStore from '@/stores/user';
-import { mapActions, mapState } from 'pinia';
-import tasks from '../stores/tasks';
+import TaskItem from '@/components/TaskItem.vue'
+import useTasksStore from '@/stores/tasks'
+import useUserStore from '@/stores/user'
+import { mapActions, mapState } from 'pinia'
+import tasks from '../stores/tasks'
 
 export default {
   name: 'Tasks',
   components: {
-    TaskItem,
+    TaskItem
   },
   data() {
     return {
-      newTitle: "",
+      newTitle: ''
     }
   },
   computed: {
@@ -76,23 +81,17 @@ export default {
       // } else {
       //   await this.addNewTask()
       // }
-      await this.addNewTask(
-        this.newTitle, this.user.id
-      )
+      await this.addNewTask(this.newTitle, this.user.id)
     },
     async handleRemoveTask() {
-      await this.removeTask(
-        this.taskId.slice(index, 0)
-      )
+      await this.removeTask(this.taskId.slice(index, 0))
     }
   },
   async created() {
     await this.fetchTasks()
-  },
+  }
 }
-
 </script>
-
 
 <style scoped>
 @import url('bootstrap/dist/css/bootstrap.min.css');
@@ -101,7 +100,6 @@ h3 {
   font-weight: bold;
   text-decoration: double;
 }
-
 
 .loginOut {
   padding-top: 1vh;
@@ -137,7 +135,7 @@ h3 {
   position: relative;
   top: 50%;
   transform: translate(-50%, -50%);
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 #btn-logOut:hover:after {
@@ -147,7 +145,7 @@ h3 {
   width: 30px;
   height: 30px;
   top: 30%;
-  left: -20%
+  left: -20%;
 }
 
 input {
@@ -204,10 +202,12 @@ img {
 }
 
 /*MOBILE*/
-@media (max-width: 767px) {}
+@media (max-width: 767px) {
+}
 
 /*TABLET*/
-@media (min-width: 768px) and (max-width: 1023px) {}
+@media (min-width: 768px) and (max-width: 1023px) {
+}
 
 /*MOBILE Y TABLET*/
 @media (max-width: 1023px) {

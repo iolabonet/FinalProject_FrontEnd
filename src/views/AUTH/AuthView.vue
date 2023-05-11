@@ -1,20 +1,18 @@
 <template>
-  <LoginForm /> 
+  <LoginForm />
 </template>
-  
+
 <script>
-import { RouterView } from 'vue-router';
 import LoginForm from '@/components/LoginForm.vue'
+import { RouterView } from 'vue-router'
 
 export default {
-  name: 'Authview',
+  name: 'AuthView',
   components: {
     RouterView,
-    LoginForm,
+    LoginForm
   }
 }
-
 </script>
-  
-  
+
 <style scoped></style>

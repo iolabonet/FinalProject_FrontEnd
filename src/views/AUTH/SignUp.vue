@@ -16,9 +16,7 @@ Scenario: As a user, I want to create an account
 <template>
   <h1>LoginForm</h1>
 </template>
-  
-<script>
 
-</script>
-  
+<script></script>
+
 <style></style>

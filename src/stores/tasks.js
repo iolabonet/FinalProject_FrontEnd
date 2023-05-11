@@ -1,17 +1,15 @@
-import { defineStore } from 'pinia';
-import supabase from '../supabase/index';
+import { defineStore } from 'pinia'
+import supabase from '../supabase/index'
 
 export default defineStore('tasks', {
   state: () => ({
-    tasks: [],
+    tasks: []
   }),
 
   actions: {
     async fetchTasks() {
-      const { data, error } = await supabase
-        .from('tasks')
-        .select()
-      this.tasks = data;
+      const { data, error } = await supabase.from('tasks').select()
+      this.tasks = data
     },
 
     async addNewTask(title, userId) {
@@ -24,10 +22,7 @@ export default defineStore('tasks', {
     },
 
     async removeTask(taskId) {
-      const { error } = await supabase
-        .from('tasks')
-        .delete()
-        .eq('id', taskId)
+      const { error } = await supabase.from('tasks').delete().eq('id', taskId)
       if (error) throw error
       const index = this.tasks.findIndex((task) => {
         return task.id === taskId
@@ -69,10 +64,4 @@ export default defineStore('tasks', {
       }
     }
   }
-});
-
-
-
-
-
-
+})
