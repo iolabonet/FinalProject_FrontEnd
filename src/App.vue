@@ -1,24 +1,39 @@
 <template>
+  <NavBar />
+  
   <header>
     <div class="wrapper">
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">SignIn</RouterLink>
-        <RouterLink to="/about">SignOut</RouterLink>
-      </nav>
     </div>
   </header>
 
   <RouterView />
+  
+  <MyFooter />
 </template>
 
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HomeView from './components/HomeView.vue'
+<script>
+import MyFooter from '@/components/MyFooter.vue';
+import NavBar from '@/components/NavBar.vue';
+import UserStore from '@/stores/user.js';
+import { mapActions } from 'pinia';
+import { RouterLink, RouterView } from 'vue-router';
+
+export default {
+  name: "App",
+  components: {
+    RouterLink,
+    RouterView,
+    NavBar,
+    MyFooter,
+  },
+  methods: {
+    ...mapActions(UserStore, ['fetchUser'])
+  },
+  async created() {
+    await this.fetchUser()
+  }
+}
 </script>
-
-
 
 <style scoped>
 header {
@@ -28,13 +43,13 @@ header {
 
 nav {
   width: 100%;
-  font-size: 12px;
+  font-size: 1em;
   text-align: center;
   margin-top: 2rem;
 }
 
 nav a.router-link-exact-active {
-  color: var(--color-text, grey);
+  color: var(--color-text, white);
 }
 
 nav a.router-link-exact-active:hover {
@@ -43,6 +58,8 @@ nav a.router-link-exact-active:hover {
 
 nav a {
   display: inline-block;
+  color: white;
+  font-weight: 700;
   padding: 0 1rem;
   border-left: 1px solid var(--color-border);
 }
@@ -51,22 +68,38 @@ nav a:first-of-type {
   border: 0;
 }
 
+#btnToTop {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: rgb(233, 54, 218);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
 @media (min-width: 1024px) {
   header {
     display: flex;
     place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    /* padding-right: calc(var(--section-gap) / 2); */
   }
 
   header .wrapper {
     display: flex;
-    place-items: flex-start;
+    /* place-items: flex-start;  */
     flex-wrap: wrap;
   }
 
   nav {
-    text-align: left;
-    margin-left: -1rem;
+    text-align: center;
+    /* margin-left: -1rem; */
     font-size: 1rem;
 
     padding: 1rem 0;

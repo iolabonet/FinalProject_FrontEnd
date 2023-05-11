@@ -1,15 +1,19 @@
 <template>
-  <main>
-    <HomeView />
-    <h1>Final Project from iola</h1>
-  </main>
+  <div class="homePage">
+    <img src="../assets/images/post_it_Blue_with_text_logo.png" alt="">
+  </div>
 </template>
 
-<script setup>
-import HomeView from '../components/HomeView.vue'
-
-</script>
-
-
 <style scoped>
+.homePage {
+  width: 100%;
+  height: 80vh;
+  margin-top: 5vh;
+}
+
+img {
+  position: relative;
+  width: 100%;
+  z-index: -1;
+}
 </style>
