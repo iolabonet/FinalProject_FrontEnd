@@ -3,7 +3,6 @@
 <!-- Feature: TO DO: Log Out: OK! -->
 
 <template>
-  <!-- https://codepen.io/rpandrews/pen/XWbjJEg -->
   <div class="login-page">
     <transition>
       <div v-if="!registerActive" class="wallpaper-login"></div>
@@ -12,6 +11,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-8 mx-auto">
+
           <div v-if="!registerActive" class="card login" v-bind:class="{ error: emptyFields }">
             <h1>Log In</h1>
             <form class="form-group">
@@ -191,6 +191,3 @@ h1 {
 /*MOBILE Y TABLET*/
 @media (max-width: 1023px) {}
 </style>
-
-<!-- TO DO: Un FORM pasandole una prop como objeto configurando el mail de tipo string, con una contraseña y que una vez cazado 
-el mail y el usuario lo lanze para arriba con un evento -->

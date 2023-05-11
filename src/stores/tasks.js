@@ -5,11 +5,7 @@ export default defineStore('tasks', {
   state: () => ({
     tasks: [],
   }),
-  // getters: {
-  //   tasksByInsertedDate() {
-  //     return this.tasks.sort((a, b) => (a.inserted_at > b.inserted_at ? -1 : 1));
-  //   },
-  // },
+
   actions: {
     async fetchTasks() {
       const { data, error } = await supabase
@@ -49,7 +45,7 @@ export default defineStore('tasks', {
         .eq('id', taskId)
         .select()
       if (error) throw error
-      // this.task.filter .title = newTitle buscar en la lista de tasks la que tarea que acabo de actualizr  y cambiarle el titulo
+      // TO DO: Buscar en la lista de tasks la que tarea que acabo de actualizr y cambiarle el titulo. OK!
       const index = this.tasks.findIndex((task) => {
         return task.id === taskId
       })
@@ -64,7 +60,7 @@ export default defineStore('tasks', {
         .eq('id', taskId)
         .select()
       if (error) throw error
-      // this.task.filter .taskId = newState buscar en la lista de tasks la que tarea que acabo de actualizr  y cambiarle el estado
+      // TO DO: Buscar en la lista de tasks la que tarea que acabo de actualizr y cambiarle el estado. OK!
       const index = this.tasks.findIndex((task) => {
         return task.id === taskId
       })

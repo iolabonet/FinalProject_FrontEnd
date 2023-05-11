@@ -1,13 +1,9 @@
 <template>
   <section v-if="user">
     <b-sidebar class="loginOut">
-      <button id="btn-logOut" @click="handleSignOut">Sign Out</button>
-      <!-- <font-awesome-icon :icon="['fas', 'right-from-bracket']" /> -->
+      <button id="btn-logOut" @click="handleSignOut"></button>
     </b-sidebar>
 
-    <div>
-      <!-- https://www.w3schools.com/tags/tryit.asp?filename=tryhtml_tbody -->
-    </div>
     <div>
       <!--ADD NEW TASK !-->
       <input v-model="newTitle" type="text" class="form-control" placeholder="To do..." required />
@@ -18,22 +14,21 @@
     </div>
 
     <div class="taskList-container">
-      <h5>To Do...</h5>
       <TaskItem v-for="task in tasks" :key="task.id" :taskId="task.id" :title="task.title"
         :isCompleted="task.is_complete"></TaskItem>
     </div>
-    <div class="box-completed">
-      <img src="../assets/images/post_it_yellow.png" alt="">
-      <h5>Complete:</h5>
-      <ul>
-        <li v-for="task in tasks" :key="task.id">
-          <div v-if="task.is_complete">
+    <!--LIST TASKS COMPLETED !-->
+    <div class="box-completed-container">
+      <img src="../assets/images/post_it_Blue_2.png" alt="">
+      <div class="box-completed-post">
+        <h3>Task Completed:</h3>
+        <div v-for="task in tasks" :key="task.id">
+          <p v-if="task.is_complete">
             {{ task.title }}
-          </div>
-        </li>
-      </ul>
+          </p>
+        </div>
+      </div>
     </div>
-    <!-- TO DO: Que se vean todas las tasks como si fueran post-it y al hacer hover encima se haga zoom. -->
   </section>
 
   <section class="gif" v-else>
@@ -102,23 +97,14 @@ export default {
 <style scoped>
 @import url('bootstrap/dist/css/bootstrap.min.css');
 
-h4 {
-  color: black;
+h3 {
+  font-weight: bold;
+  text-decoration: double;
 }
 
-.b-sidebar {
-  width: 10%;
-  float: right;
-  overflow: hidden;
-  min-height: 10%;
-  transition: width 3s;
-}
-
-.b-sidebar:hover {
-  width: 15%;
-}
 
 .loginOut {
+  padding-top: 1vh;
   height: 5rem;
   display: flex;
   flex-direction: row-reverse;
@@ -136,15 +122,15 @@ h4 {
 }
 
 #btn-logOut::before {
+  content: 'Sign Out';
   position: relative;
-  top: 50%;
-  left: 50%;
   transform: translate(-50%, -50%);
   transition: all;
 }
 
 #btn-logOut:hover::before {
-  top: -30px;
+  top: -40px;
+  left: -60%;
 }
 
 #btn-logOut::after {
@@ -155,9 +141,13 @@ h4 {
 }
 
 #btn-logOut:hover:after {
-  content: url(../assets/images/puerta\ -\ copia.jpg);
-  font-size: 10px;
-  top: -20%;
+  content: '';
+  background-image: url(../assets/images/right-from-bracket-solid.svg);
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  top: 30%;
+  left: -20%
 }
 
 input {
@@ -168,7 +158,8 @@ input {
   width: 4rem;
   height: 2rem;
   font-weight: 400;
-  background-color: rgb(81, 250, 3);
+  background-color: rgb(118, 118, 248);
+  border-radius: 15px;
   cursor: pointer;
 }
 
@@ -176,45 +167,53 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .taskList-container {
-  margin-top: 10%;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2vh;
   width: 100%;
-  background-color: rgb(235, 151, 27);
 }
 
 img {
-  max-width: 600px;
+  max-width: 40vh;
   width: 100%;
   z-index: -1;
   background-repeat: no-repeat;
-}
-
-.box-completed {
-  color: rgb(241, 235, 235);
   display: flex;
   flex-wrap: wrap;
 }
 
+.box-completed-container {
+  padding-left: 2vh;
+  position: relative;
+  display: inline-block;
+}
 
+.box-completed-post {
+  height: 100px;
+  width: max-content;
+  padding-left: 12vh;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  color: rgb(3, 14, 107);
+}
 
 /*MOBILE*/
-@media (max-width: 767px) {
-  img {
-    width: 100%;
-    z-index: -1;
-  }
-}
+@media (max-width: 767px) {}
 
 /*TABLET*/
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 1023px) {}
+
+/*MOBILE Y TABLET*/
+@media (max-width: 1023px) {
   img {
     width: 100%;
     z-index: -1;
   }
 }
-
-/*MOBILE Y TABLET*/
-@media (max-width: 1023px) {}
 </style>

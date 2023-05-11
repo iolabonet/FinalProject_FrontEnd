@@ -3,7 +3,9 @@
     <b-navbar toggleable="lg" type="dark" variant="info">
       <img src="../assets/images/logo1.png" alt="inatg">
       <b-navbar-nav>
-        <b-nav-item href="#">TO DO App</b-nav-item>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/auth/sign-in">Sign In</RouterLink>
+        <RouterLink to="/tasks">Tasks</RouterLink>
       </b-navbar-nav>
     </b-navbar>
   </div>
@@ -19,7 +21,7 @@ export default {
 @import url('bootstrap/dist/css/bootstrap.min.css');
 
 .navBar {
-  background-color: rgb(96, 230, 230);
+  background-color: rgb(46, 129, 238);
   width: auto;
   height: 8vh;
 }
@@ -32,19 +34,17 @@ img {
 }
 
 b-navbar-nav {
-  margin-left: 2vh;
-  position: relative;
-  color: rgb(46, 129, 238);
-  font-size: x-large;
+  padding-left: 2rem;
+  color: white;
+  font-size: large;
   font-weight: bold;
 }
 
-/*MOBILE*/
-@media (max-width: 767px) {}
+b-navbar-nav a {
+  margin-right: 2rem;
+}
 
-/*TABLET*/
-@media (min-width: 768px) and (max-width: 1023px) {}
-
-/*MOBILE Y TABLET*/
-@media (max-width: 1023px) {}
+b-navbar-nav a:last-of-type {
+  margin-right: 0;
+}
 </style>

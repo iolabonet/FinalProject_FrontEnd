@@ -2,7 +2,12 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
-Se ha realizado una versión para la practica del desarrollo.
+Se ha realizado una versión para la practica del desarrollo de una TO DO App.
+
+An important tool for your daily life, for personal or professional tasks, to modernize and organize your workflow.
+
+Get your work done early and very intelligently planned.
+
 
 ## Recommended IDE Setup
 ## Customize configuration
@@ -12,11 +17,7 @@ Se ha realizado una versión para la practica del desarrollo.
 
 ### Características, configuración y las especificaciones técnicas de la aplicación:
 
-An important tool to your Daily
-For personal and worker tasks
-Modernize your workflow
-Get work done early!
-Intelligently planned together.
+
 
 ### Los enlaces y documentación usada para la elaboración del proyecto.
 

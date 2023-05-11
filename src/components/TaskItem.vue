@@ -1,27 +1,16 @@
 <!-- Feature: TO DO Basic CRUD: Ok -->
 
-<!-- Feature: Mark a task as incomplete
-    Background: As a logged in user, I want to be able to mark a task as incomplete and automatically move it back to the to-do section 
-    Given I have already created a task and marked it as complete
- 
-    Scenario: As a logged-in user I want to mark a task as incomplete
-    When I locate the task I'd like to mark it as incomplete
-    And I click the corresponding incomplete button to the task
-    Then I expect to see that my task has immediately been moved to the to-do section -->
-
 <template>
   <div class="app-container" id="taskItem">
+    <div class="deadLine">
+      <h3>{{ title }}</h3>
+      <input class="deadLine" type="checkbox" v-model="state" @change="handleChangeState" />
+    </div>
     <div class="tasks-container">
-      <img src="../assets/images/—Pngtree—vector push pin paper_8586153.png" alt="">
-      <h4>{{ title }}</h4>
-      <input v-model="newTitle" type="text" class="form-control">
+      <input v-model="newTitle" type="text" class="form-control" id="editTask">
       <button @click="handleUpdateTaskTitle()" class="edit-btn">Edit</button>
       <div>
         <button @click="handleRemoveTask" type="button" class="delete-btn">Delete</button>
-        <label class="isComplet">
-          <img src="../assets/images/dead_line.jpg" alt=" Is completed?">
-        </label>
-        <input class="deadLine" type="checkbox" v-model="state" @change="handleChangeState"/>  
       </div>
     </div>
   </div>
@@ -76,67 +65,89 @@ div {
   height: auto;
 }
 
-input {
-  margin-top: 0.5rem;
-}
-
-input::placeholder {
+h3 {
   font-weight: bold;
-  opacity: 0.5;
-  color: blue;
+  text-decoration: double;
+  color: rgb(3, 14, 107);
 }
 
-.deadLine {
-  width: 2vh;
-  height: 2vh;
-}
-
-#taskItem {
-  background-color: rgb(91, 197, 188);
-  padding-left: 5%;
-  color: black;
-}
-
-.deleteTaskBox {
-  background-color: white;
-}
-
-.addTask-btn {
-  background-color: green;
-}
-
-.delete-btn {
-  background-color: red;
-  width: 100px;
-}
-
-.edit-btn {
-  background-color: blue;
-  width: 60px;
-  border-radius: 20px solid black;
-
-}
-
-.tasks-container {
-  width: auto;
-  color:black;
+.app-container {
   display: flex;
+  flex-direction: column;
+  align-items: initial;
+  justify-content: flex-start;
+  padding: 8vh 5vh 3vh 3vh;
+  max-width: 100%;
+  width: auto;
+  height: 400px;
   flex-wrap: wrap;
 }
 
-
-img {
-  width: 4vh;
+#taskItem {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap-reverse;
+  background-image: url(../assets/images/post_it_yellow_cut_black.png);
+  background-size: contain;
+  max-width: 390px;
+  width: 100%;
+  background-repeat: no-repeat;
+  padding-left: 4vh;
+  color: black;
 }
 
-/*MOBILE*/
-@media (max-width: 767px) {}
+.tasks-container {
+  max-width: 100%;
+  margin-top: 2.5vh;
+  margin-left: 1.2vh;
+  gap: 3vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
 
-/*TABLET*/
-@media (min-width: 768px) and (max-width: 1023px) {}
+input {
+  margin-top: 0.5rem;
+  height: 4vh;
+}
 
-/*MOBILE Y TABLET*/
-@media (max-width: 1023px) {
+.form-control {
+  max-width: 28vh;
+}
 
+#editTask {
+  color: rgb(181, 192, 81);
+}
+
+#editTask:hover {
+  color: rgb(12, 12, 12);
+}
+
+.deadLine {
+  display: flex;
+  margin-top: 2vh;
+  width: 30vh;
+  height: 3vh;
+}
+
+.edit-btn {
+  margin-left: 10vh;
+  background-color: rgb(118, 118, 248);
+  color: rgb(3, 14, 107);
+  font-weight: bold;
+  width: 14vh;
+  border-radius: 20px;
+  border: none;
+}
+
+.delete-btn {
+  margin-left: 2vh;
+  background-color: rgb(245, 92, 92);
+  border-color: rgb(245, 92, 92);
+  border-radius: 20px;
+  color: rgb(94, 2, 2);
+  font-weight: bold;
+  width: 8vh;
+  cursor: pointer;
 }
 </style>
